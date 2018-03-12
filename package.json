@@ -1,0 +1,16 @@
+{
+  "name": "clipperlang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csvtojson": "^1.1.9",
+    "json2csv": "^4.0.2",
+    "ramda": "^0.25.0"
+  }
+}
