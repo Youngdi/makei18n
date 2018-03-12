@@ -41,6 +41,8 @@ const getLangPrefix = R.cond([
   [R.equals('Spanish (Spain)'), R.always('es')],
   [R.equals('Turkish'), R.always('tr')],
   [R.equals('Thai'), R.always('th')],
+  [R.equals('Romanian'), R.always('ro')],
+  [R.equals('Portuguese'), R.always('pt')],
   [R.T, R.identity]
 ]);
 const generateLangFile = async () => {
