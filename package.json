@@ -1,6 +1,6 @@
 {
   "name": "makei18n",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A chrome extension i18n maker",
   "main": "convertCSVtoJSON.js",
   "scripts": {

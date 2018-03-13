@@ -1,4 +1,4 @@
-# makei18n [![npm](https://img.shields.io/npm/v/makei18n.svg)](https://npmjs.com/package/react-native-vector-icons) 
+# makei18n [![npm](https://img.shields.io/npm/v/makei18n.svg)](https://www.npmjs.com/package/makei18n) 
  
 ![N|Solid](https://i.imgur.com/QPlwHgC.png?1)
 
