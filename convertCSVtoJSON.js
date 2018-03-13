@@ -1,7 +1,7 @@
 /** @module makei18n */
 const R = require('ramda');
 const { generateDir, getLangString, defaultGetLangPrefix, generateFile, generateLangList, defaultLangList} = require('./lib/utility');
-
+const defaultEnv = 'ChromeExtension';
 /**
  * @description 
  *  To make your chrome extension i18n so easy. There is 23 countries language prefix in default and feel free to customize your own. <br>
@@ -100,10 +100,10 @@ makei18n({
  * @param {array} [langList] you can provide your own i18n list
  * @param {function} [getLangPrefix] you can customize your own logic function to prefix your language list
  */
-exports.makei18n = ({inputCSV, langList = defaultLangList, getLangPrefix = defaultGetLangPrefix}) =>
+exports.makei18n = ({inputCSV, langList = defaultLangList, getLangPrefix = defaultGetLangPrefix, env = defaultEnv, outputFileName = defaultOutputFileName}) =>
   R.pipeP(
     generateDir,
     getLangString,
-    generateLangList(langList),
-    generateFile(langList, getLangPrefix),
-  )(langList, getLangPrefix, inputCSV)
+    generateLangList(langList, env),
+    generateFile(langList, getLangPrefix, env, outputFileName),
+  )(langList, getLangPrefix, inputCSV, env, outputFileName)
