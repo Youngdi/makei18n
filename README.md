@@ -63,7 +63,7 @@ const defaultLangList = [
 'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'
 ];
 ```
-### Parameters --[JSdoc api](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
+### Parameters - [JSdoc api](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
 
 | Name | Type | Attributes | Description |
 |---|---|---|---|

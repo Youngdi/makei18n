@@ -1,6 +1,6 @@
 {
   "name": "makei18n",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A chrome extension i18n maker",
   "main": "convertCSVtoJSON.js",
   "scripts": {
@@ -15,9 +15,10 @@
   ],
   "email": "u9951062@gmail.com",
   "bugs": {
-    "url": "https://github.com/Youngdi/covertLangString/issues"
+    "url": "https://github.com/Youngdi/makei18n/issues"
   },
-  "homepage": "https://github.com/Youngdi/covertLangString#readme",
+  "repository": "https://github.com/Youngdi/makei18n",
+  "homepage": "https://github.com/Youngdi/makei18n#readme",
   "dependencies": {
     "csvtojson": "^1.1.9",
     "json2csv": "^4.0.2",
