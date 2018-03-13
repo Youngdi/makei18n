@@ -1,4 +1,4 @@
-# makei18n
+# makei18n [![N|Solid](http://www.pvhc.net/img202/skuccvgidkcsmnlqkdih.png =250x250)]
 
  [![npm](https://img.shields.io/npm/v/react-native-vector-icons.svg)](https://npmjs.com/package/react-native-vector-icons) 
  
@@ -8,7 +8,9 @@ There is 23 countries language prefix in default and feel free to customize your
 ## Installation
 Run: `$ npm install makei18n --save`
 ## csv file format
-`Note`: csv file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..."
+`Note`: csv file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..." 
+[just go check example.csv here](https://github.com/Youngdi/makei18n/blob/master/example.csv)
+
 |         key         | EN | CHT | CHS | Others.. |
 |---|---|---|---|---|
 | msg_btn_close_divLogine  | close| 關閉|关闭|Others...|
@@ -17,6 +19,7 @@ Run: `$ npm install makei18n --save`
 ### Example usage: 
 
 ```
+const { makei18n } = require('makei18n');
 makei18n({
   inputCSV:`${__dirname}/clipperMultiLanguage.csv`, // your csv file path
   langList: defaultLangList,  // optional
@@ -65,7 +68,7 @@ const defaultLangList = [
 |---|---|---|---|
 | `inputCSV`  | string | required |the path of your csv file|
 | `langList` | array | optional| you can provide your own i18n list |
-| `getLangPrefix` | function | optional| you can customize your own logic to prefix your language list |
+| `getLangPrefix` | function | optional| you can customize your own logic function to prefix your language list |
 ## License
 
 This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).

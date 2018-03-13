@@ -90,6 +90,7 @@ const defaultLangList = [
 ];
 ```
 * @example <caption>Example usage: </caption>
+const { makei18n } = require('makei18n');
 makei18n({
   inputCSV:`${__dirname}/clipperMultiLanguage.csv`, // your csv file path
   langList: defaultLangList,  // optional
@@ -97,7 +98,7 @@ makei18n({
 });
  * @param {string} inputCSV - the path of your csv file
  * @param {array} [langList] you can provide your own i18n list
- * @param {function} [getLangPrefix] you can customize your own logic to prefix your language list
+ * @param {function} [getLangPrefix] you can customize your own logic function to prefix your language list
  */
 exports.makei18n = ({inputCSV, langList = defaultLangList, getLangPrefix = defaultGetLangPrefix}) =>
   R.pipeP(
