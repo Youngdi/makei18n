@@ -63,13 +63,14 @@ const defaultLangList = [
 'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'
 ];
 ```
-### Parameters
+### Parameters --[JSdoc api](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
 
 | Name | Type | Attributes | Description |
 |---|---|---|---|
 | `inputCSV`  | string | required |the path of your csv file|
 | `langList` | array | optional| you can provide your own i18n list |
 | `getLangPrefix` | function | optional| you can customize your own logic function to prefix your language list |
+
 ## License
 
 This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).
