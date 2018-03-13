@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>makei18n - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-makei18n.html">makei18n</a><ul class='methods'><li data-type='method'><a href="module-makei18n.html#.makei18n">makei18n</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">makei18n</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".makei18n"><span class="type-signature">(static) </span>makei18n<span class="signature">(inputCSV, langList<span class="signature-attributes">opt</span>, getLangPrefix<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="convertCSVtoJSON.js.html">convertCSVtoJSON.js</a>, <a href="convertCSVtoJSON.js.html#line168">line 168</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>To make your chrome extension i18n so easy. There is 23 countries language prefix in default and feel free to customize your own. <br>
+ <b style="color:red">Note: </b><b>csv file must follows this pattern &quot;key&quot;,&quot;EN&quot;,&quot;CHT&quot;,&quot;CHS&quot;,&quot;Czech&quot;,&quot;German&quot;,&quot;French&quot;,&quot;Others...&quot;</b></p>
+<p><style>
+td {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  box-sizing: border-box;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+th {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  margin: 0px;
+  text-align: left;
+  border: 1px solid #dddddd;
+  vertical-align: top;
+  padding: 10px;
+  display: table-cell;
+  font-weight: 700;
+}
+code {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  background: #f4f4f4;
+}
+</style></p>
+<p><table style="border-spacing: 0; border: 1px solid #ddd; border-collapse: collapse; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); width: 100%; font-size: 14px; margin: 1em 0; color: #4d4e53; font-family: 'Helvetica Neue', Helvetica, sans-serif; line-height: 160%;">
+  <tr>
+    <th>key</th>
+    <th>EN</th>
+    <th>CHT</th>
+    <th>CHS</th>
+    <th>Others</th>
+  </tr>
+  <tr>
+    <td><code>msg_btn_close_divLogine</code></td>
+    <td>Close</td>
+    <td>關閉</td>
+    <td>关闭</td>
+    <td>Others</td>
+  </tr>
+  <tr>
+    <td><code>msg_btn_back</code></td>
+    <td>Back</td>
+    <td>回上一頁</td>
+    <td>回上一页</td>
+    <td>Others</td>
+  </tr>
+</table>
+<br></p>
+<hr>
+<p><br></p>
+<pre class="prettyprint source"><code>    const defaultGetLangPrefix = R.cond([
+      [R.equals('CHS'), R.always('zh_CN')],
+      [R.equals('CHT'), R.always('zh_TW')],
+      [R.equals('EN'), R.always('en')],
+      [R.equals('Korean'), R.always('ko')],
+      [R.equals('Japanese'), R.always('ja')],
+      [R.equals('Italian'), R.always('it')],
+      [R.equals('Danish'), R.always('da')],
+      [R.equals('Hungarian'), R.always('hu')],
+      [R.equals('Swedish'), R.always('sv')],
+      [R.equals('Russian'), R.always('ru')],
+      [R.equals('Czech'), R.always('cs')],
+      [R.equals('Dutch'), R.always('nl')],
+      [R.equals('Finnish'), R.always('fi')],
+      [R.equals('French'), R.always('fr')],
+      [R.equals('German'), R.always('de')],
+      [R.equals('Greek'), R.always('el')],
+      [R.equals('Norwegian'), R.always('no')],
+      [R.equals('Polish'), R.always('pl')],
+      [R.equals('Spanish (Spain)'), R.always('es')],
+      [R.equals('Turkish'), R.always('tr')],
+      [R.equals('Thai'), R.always('th')],
+      [R.equals('Romanian'), R.always('ro')],
+      [R.equals('Portuguese'), R.always('pt')],
+      [R.T, R.identity]
+    ]);</code></pre><pre class="prettyprint source"><code>  const defaultLangList = [
+    'EN', 'CHT', 'CHS', 'Czech', 'German', 'French', 'Spanish (Spain)', 'Italian',
+    'Japanese', 'Korean', 'Polish', 'Russian', 'Turkish', 'Thai', 'Portuguese',
+    'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'];</code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">makei18n Usage</p>
+    
+    <pre class="prettyprint"><code>makei18n({
+  inputCSV:`${__dirname}/clipperMultiLanguage.csv`,
+  langList: defaultLangList,  // optional
+  getLangPrefix: defaultGetLangPrefix, // optional
+});</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputCSV</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the path of your csv file</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>langList</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>you can input your own i18n list</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>getLangPrefix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>you can customize your own logic to prefix your language list</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 13 2018 15:33:47 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
