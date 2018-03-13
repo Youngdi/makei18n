@@ -1,7 +1,7 @@
-# makei18n [![N|Solid](http://www.pvhc.net/img202/skuccvgidkcsmnlqkdih.png =250x250)]
-
- [![npm](https://img.shields.io/npm/v/react-native-vector-icons.svg)](https://npmjs.com/package/react-native-vector-icons) 
+# makei18n [![npm](https://img.shields.io/npm/v/makei18n.svg)](https://npmjs.com/package/react-native-vector-icons) 
  
+![N|Solid](https://i.imgur.com/QPlwHgC.png?1)
+
 To make your `chrome extension i18n` so easy. Just input your csv file then it will automatic generate `_locales` for you. 
 There is 23 countries language prefix in default and feel free to customize your own. 
 
@@ -9,6 +9,7 @@ There is 23 countries language prefix in default and feel free to customize your
 Run: `$ npm install makei18n --save`
 ## csv file format
 `Note`: csv file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..." 
+
 [just go check example.csv here](https://github.com/Youngdi/makei18n/blob/master/example.csv)
 
 |         key         | EN | CHT | CHS | Others.. |
