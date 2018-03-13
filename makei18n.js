@@ -1,7 +1,6 @@
 /** @module makei18n */
 const R = require('ramda');
-const { generateDir, getLangString, defaultGetLangPrefix, generateFile, generateLangList, defaultLangList} = require('./lib/utility');
-const defaultEnv = 'ChromeExtension';
+const { generateDir, getLangString, defaultGetLangPrefix, makeJSONfile, generateLangList, defaultLangList} = require('./lib/utility');
 /**
  * @description 
  *  To make your chrome extension i18n so easy. There is 23 countries language prefix in default and feel free to customize your own. <br>
@@ -93,17 +92,25 @@ const defaultLangList = [
 const { makei18n } = require('makei18n');
 makei18n({
   inputCSV:`${__dirname}/example.csv`, // your csv file path
-  langList: defaultLangList,  // optional
-  getLangPrefix: defaultGetLangPrefix, // optional
+  // langList: defaultLangList,  // optional
+  // getLangPrefix: defaultGetLangPrefix, // optional
 });
  * @param {string} inputCSV - the path of your csv file
  * @param {array} [langList] you can provide your own i18n list
  * @param {function} [getLangPrefix] you can customize your own logic function to prefix your language list
  */
-exports.makei18n = ({inputCSV, langList = defaultLangList, getLangPrefix = defaultGetLangPrefix, env = defaultEnv, outputFileName = defaultOutputFileName}) =>
+exports.makei18n = ({
+    inputCSV,
+    langList = defaultLangList,
+    getLangPrefix = defaultGetLangPrefix,
+    env = '',
+    outputFileName = 'messages.json',
+    inputDir = './_locales',
+    inputFileName = 'messages.json',
+  }) =>
   R.pipeP(
     generateDir,
     getLangString,
-    generateLangList(langList, env),
-    generateFile(langList, getLangPrefix, env, outputFileName),
-  )(langList, getLangPrefix, inputCSV, env, outputFileName)
+    generateLangList(langList, env, inputFileName, inputDir, getLangPrefix),
+    makeJSONfile(langList, getLangPrefix, env, outputFileName),
+  )(langList, getLangPrefix, inputCSV)

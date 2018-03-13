@@ -1,43 +1,65 @@
 "key","EN","CHT","CHS","Czech","German","French","Spanish (Spain)","Italian","Japanese","Korean","Polish","Russian","Turkish","Thai","Portuguese","Hungarian","Romanian","Danish","Dutch","Finnish","Greek","Norwegian","Swedish"
-"finishe_today",,"今天進度已經完成囉！",,,,,,,,,,,,,,,,,,,,,
-"pull_down_to_finish",,"用力往上滑來完成今天進度",,,,,,,,,,,,,,,,,,,,,
-"move_to_previous_year",,"去年已經不能回頭！",,,,,,,,,,,,,,,,,,,,,
-"move_to_next_year",,"今年還沒過完呢！",,,,,,,,,,,,,,,,,,,,,
-"month",,"月",,,,,,,,,,,,,,,,,,,,,
-"day",,"日",,,,,,,,,,,,,,,,,,,,,
-"font_type",,"字體",,,,,,,,,,,,,,,,,,,,,
-"font_type1",,"預設",,,,,,,,,,,,,,,,,,,,,
-"font_type2",,"PingFang",,,,,,,,,,,,,,,,,,,,,
-"font_type3",,"Times",,,,,,,,,,,,,,,,,,,,,
-"font_size",,"字級",,,,,,,,,,,,,,,,,,,,,
-"font_line",,"行距",,,,,,,,,,,,,,,,,,,,,
-"pull_down_congrats",,"恭喜你完成今天的進度！",,,,,,,,,,,,,,,,,,,,,
-"bookmark",,"書籤",,,,,,,,,,,,,,,,,,,,,
-"close_tooltip",,"關閉",,,,,,,,,,,,,,,,,,,,,
-"copy_verse",,"複製",,,,,,,,,,,,,,,,,,,,,
-"share_verse",,"分享",,,,,,,,,,,,,,,,,,,,,
-"popup_copy_successed",,"複製成功",,,,,,,,,,,,,,,,,,,,,
-"popup_bookmark_successed",,"已加入書籤",,,,,,,,,,,,,,,,,,,,,
-"popup_bookmark_removed",,"移除書籤",,,,,,,,,,,,,,,,,,,,,
-"popup_share_successed",,"分享成功",,,,,,,,,,,,,,,,,,,,,
-"bookmark_search",,"搜尋",,,,,,,,,,,,,,,,,,,,,
-"bookmark_isempty",,"目前沒有書籤",,,,,,,,,,,,,,,,,,,,,
-"bookmark_no_searchKey",,"沒有bookmark_no_searchKey的書籤",,,,,,,,,,,,,,,,,,,,,
-"bookmark_number",,"目前書籤經文有bookmark_number個",,,,,,,,,,,,,,,,,,,,,
-"bookmark_matchSearchKey",,"目前符合searchKey的書籤經文有bookmark_number個",,,,,,,,,,,,,,,,,,,,,
-"bible_searchKey_limit",,"搜尋不能是空的",,,,,,,,,,,,,,,,,,,,,
-"bible_search_chapter",,"章節",,,,,,,,,,,,,,,,,,,,,
-"bible_search_book",,"書卷",,,,,,,,,,,,,,,,,,,,,
-"bible_search_placeholder",,"所有",,,,,,,,,,,,,,,,,,,,,
-"bible_search_old_testament",,"舊約",,,,,,,,,,,,,,,,,,,,,
-"bible_search_new_testament",,"新約",,,,,,,,,,,,,,,,,,,,,
-"bible_search_laws",,"律法書",,,,,,,,,,,,,,,,,,,,,
-"bible_search_history",,"歷史書",,,,,,,,,,,,,,,,,,,,,
-"bible_search_wisdom",,"智慧書",,,,,,,,,,,,,,,,,,,,,
-"bible_search_prophet",,"先知書",,,,,,,,,,,,,,,,,,,,,
-"bible_search_gospel",,"四福音",,,,,,,,,,,,,,,,,,,,,
-"bible_search_paul",,"保羅書信",,,,,,,,,,,,,,,,,,,,,
-"bible_search_title",,"搜尋",,,,,,,,,,,,,,,,,,,,,
-"bible_verse_number",,"目前經文有verse_number個",,,,,,,,,,,,,,,,,,,,,
-"note_title_placeholder",,"為這天靈修日記訂個標題！",,,,,,,,,,,,,,,,,,,,,
-"note_content_placeholder",,"寫點什麼...",,,,,,,,,,,,,,,,,,,,,
+"msg_bbb","Login With Cloud","登入bbb123","登入Notes Station Cloud","","","","","","","","","","","","","","","","","","","",""
+"msg_aaa","Login With Cloud","登入aaa123","登入Notes Station Cloud","","","","","","","","","","","","","","","","","","","",""
+"msg_spanLogin_Cloud","Login With Cloud","登入","登入Notes Station Cloud","","","","","","","","","","","","","","","","","","","",""
+"msg_spanLogin_NAS","Login With NAS","登入NAS上的Notes Station","登入NAS上的Notes Station","","","","","","","","","","","","","","","","","","","",""
+"msg_btn_close_divLogin","Close","關閉","关闭","","","","","","","","","","","","","","","","","","","",""
+"msg_btn_back","Back","回上頁","回上页","","","","","","","","","","","","","","","","","","","",""
+"msg_spanCloud_UserName","Username","帳號","账号","","","","","","","","","","","","","","","","","","","",""
+"msg_spanCloud_Password","Password","密碼","密码","","","","","","","","","","","","","","","","","","","",""
+"msg_txtCloud_UserName","Please enter your myQNAPcloud ID (email)","請輸入myQNAPcloud帳號(email)","请输入myQNAPcloud账号(email)","","","","","","","","","","","","","","","","","","","",""
+"msg_txtCloud_Password","Please enter your password","請輸入密碼","请输入密码","","","","","","","","","","","","","","","","","","","",""
+"msg_spanCloud_Login","Login","登入","登入","","","","","","","","","","","","","","","","","","","",""
+"msg_spanCloud_TestMessage_Failed","Login Failed","登入失敗","登入失败","","","","","","","","","","","","","","","","","","","",""
+"msg_spanCloud_TestMessage_Successful","Login Successful","登入成功","登入成功","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_Address","Hostname / IP","主機名稱/IP","主机名/IP","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_Port","Port","埠號","埠号","","","","","","","","","","","","","","","","","","","",""
+"msg_txtNAS_Address","Hostname / IP","主機名稱/IP","主机名/IP","","","","","","","","","","","","","","","","","","","",""
+"msg_txtNAS_Port","Port","連接埠","端口","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_Test","Test","測試","测试","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_TestMessage1","Connecting...","連線中","联机中","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_TestMessage2","Connection Failed","連線失敗","联机失败","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_TestMessage3","Connection Successful","連線成功","联机成功","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_UserName","Username","帳號","账号","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_Password","Password","密碼","密码","","","","","","","","","","","","","","","","","","","",""
+"msg_txtNAS_UserName","Please enter your username","請輸入使用帳號","请输入使用账号","","","","","","","","","","","","","","","","","","","",""
+"msg_txtNAS_Password","Please enter your password","請輸入密碼","请输入密码","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_Login","Login","登入","登入","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_TestMessage_Failed","Login Failed","登入失敗","登入失败","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_TestMessage_Successful","Login Successful","登入成功","登入成功","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_GetTitle","Clip Modes","擷取方式","撷取方式","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_DocumentPage","Full Article","整份文件","整份文件","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_AreaPage","Add region (Image)","新增區塊截圖","新增区块截图","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_AreaPage2","Add region (Article)","新增區塊圖文","新增区块图文","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_FullPage","Full Page Image","整頁截圖","整页截图","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_NotePath","Location","筆記儲存位置","笔记储存位置","","","","","","","","","","","","","","","","","","","",""
+"msg_btnNAS_AddNotebook","New Notebook and Session","新增筆記本與章節","新增笔记本与章节","","","","","","","","","","","","","","","","","","","",""
+"msg_btnNAS_AddSection","New Session","新增章節","新增章节","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_Tag","Tag","筆記標籤","笔记卷标","","","","","","","","","","","","","","","","","","","",""
+"msg_tags_input_tag","Add tag","新增標籤","新增标签","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_AddNote","Save","儲存","储存","","","","","","","","","","","","","","","","","","","",""
+"msg_spanSetting","Options","選項","选项","","","","","","","","","","","","","","","","","","","",""
+"msg_spanLogout","Logout","登出","注销","","","","","","","","","","","","","","","","","","","",""
+"msg_error_book_name","Please enter a name for the notebook.","請輸入筆記本名稱","请输入笔记本名称","","","","","","","","","","","","","","","","","","","",""
+"msg_error_note_name","Please enter a name for the session.","請輸入章節名稱","请输入章节名称","","","","","","","","","","","","","","","","","","","",""
+"msg_error_save","Cannot clip in this position.","無法在此處截取","无法在此处截取","","","","","","","","","","","","","","","","","","","",""
+"msg_spanSettings_VersionText","Version","版本","版本","","","","","","","","","","","","","","","","","","","",""
+"msg_spanSettings_Settings","Options","選項","选项","","","","","","","","","","","","","","","","","","","",""
+"msg_spanSettings_AreaPageModeHotKey","HotKey to switch the region mode","區塊擷圖快鍵","区块撷图快键","","","","","","","","","","","","","","","","","","","",""
+"msg_spanSettings_ClipperMainPreviewWidth","Width of the preview window","預覽寬度","预览宽度","","","","","","","","","","","","","","","","","","","",""
+"msg_function_info_AreaPageModeHotKey","Please enter the hotkey","請在輸入框中輸入快捷鍵符號 快速熱鍵切換","请在输入框中输入快捷键符号 快速热键切换","","","","","","","","","","","","","","","","","","","",""
+"msg_function_info_ClipperMainPreviewWidth","Pease enter the minimum width of the preview windows (should larger then 600)","請在輸入框中輸入預覽寬度值 最小寬度600px","请在输入框中输入预览宽度值 最小宽度600px","","","","","","","","","","","","","","","","","","","",""
+"msg_spanSettings_Save","Save","儲存","储存","","","","","","","","","","","","","","","","","","","",""
+"msg_spanSettings_Cancel","Close","關閉","关闭","","","","","","","","","","","","","","","","","","","",""
+"msg_spanScreen_Action","Please drag the mouse to clip a image","請拖曳移動並擷取 ""區塊截圖""","请拖曳移动并撷取 ""区块截图""","","","","","","","","","","","","","","","","","","","",""
+"msg_spanScreen_Action1","Please select the content to clip","請拖曳移動並擷取 ""區塊圖文""","请拖曳移动并撷取 ""区块图文""","","","","","","","","","","","","","","","","","","","",""
+"msg_spanScreen_Cancel","Cancel","取消","取消","","","","","","","","","","","","","","","","","","","",""
+"msg_spanScreen_Info","Press ""@key@"" to switch to ""Image"" mode","按下 ""@key@"" 鍵可切換成""區塊截圖""模式","按下 ""@key@"" 键可切换成""区块截图""模式","","","","","","","","","","","","","","","","","","","",""
+"msg_spanScreen_Info1","Press ""@key@"" to switch to ""Article"" mode","按下 ""@key@"" 鍵可切換成""區塊圖文""模式","按下 ""@key@"" 键可切换成""区块图文""模式","","","","","","","","","","","","","","","","","","","",""
+"msg_spanTryFullPageMode","Clip Again","重新擷取","重新撷取","","","","","","","","","","","","","","","","","","","",""
+"msg_spanGmailMode_AttachmentSelectAll","Select All","全部選取","全部选取","","","","","","","","","","","","","","","","","","","",""
+"msg_spanGmailMode_AttachmentClearAll","Cancel All","全部取消","全部取消","","","","","","","","","","","","","","","","","","","",""
+"msg_spanGmailMode_Info","Selected attachment:","已選取附件數量:","已选取附件数量:","","","","","","","","","","","","","","","","","","","",""
+"msg_spanGmailMode_Table","Keep table format","保留表格","保留表格","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_SuccessMessage","Done","已完成","已完成","","","","","","","","","","","","","","","","","","","",""
+"msg_spanNAS_SuccessMessageClose","Close","關閉","关闭","","","","","","","","","","","","","","","","","","","",""

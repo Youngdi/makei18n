@@ -1,11 +1,8 @@
 "key","EN","CHT","CHS","Czech","German","French","Spanish (Spain)","Italian","Japanese","Korean","Polish","Russian","Turkish","Thai","Portuguese","Hungarian","Romanian","Danish","Dutch","Finnish","Greek","Norwegian","Swedish"
-"msg_spanLogin_Cloud","Login With Cloud","登入Notes Station Cloud","登入Notes Station Cloud",,,,,,,,,,,,,,,,,,,,
-"msg_spanLogin_NAS","Login With NAS","登入NAS上的Notes Station","登入NAS上的Notes Station",,,,,,,,,,,,,,,,,,,,
 "msg_btn_close_divLogin","Close","關閉","关闭",,,,,,,,,,,,,,,,,,,,
 "msg_btn_back","Back","回上頁","回上页",,,,,,,,,,,,,,,,,,,,
 "msg_spanCloud_UserName","Username","帳號","账号",,,,,,,,,,,,,,,,,,,,
 "msg_spanCloud_Password","Password","密碼","密码",,,,,,,,,,,,,,,,,,,,
-"msg_txtCloud_UserName","Please enter your myQNAPcloud ID (email)","請輸入myQNAPcloud帳號(email)","请输入myQNAPcloud账号(email)",,,,,,,,,,,,,,,,,,,,
 "msg_txtCloud_Password","Please enter your password","請輸入密碼","请输入密码",,,,,,,,,,,,,,,,,,,,
 "msg_spanCloud_Login","Login","登入","登入",,,,,,,,,,,,,,,,,,,,
 "msg_spanCloud_TestMessage_Failed","Login Failed","登入失敗","登入失败",,,,,,,,,,,,,,,,,,,,

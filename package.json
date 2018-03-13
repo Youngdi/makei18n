@@ -1,8 +1,8 @@
 {
   "name": "makei18n",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "A chrome extension i18n maker",
-  "main": "convertCSVtoJSON.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "jsdoc": "node_modules/.bin/jsdoc -c jsdoc.json"
@@ -17,9 +17,13 @@
   "bugs": {
     "url": "https://github.com/Youngdi/makei18n/issues"
   },
+  "bin": {
+    "makei18n": "./index.js"
+  },
   "repository": "https://github.com/Youngdi/makei18n",
   "homepage": "https://github.com/Youngdi/makei18n#readme",
   "dependencies": {
+    "commander": "^2.15.0",
     "csvtojson": "^1.1.9",
     "json2csv": "^4.0.2",
     "ramda": "^0.25.0",
