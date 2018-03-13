@@ -22,7 +22,7 @@ Run: `$ npm install makei18n --save`
 ```
 const { makei18n } = require('makei18n');
 makei18n({
-  inputCSV:`${__dirname}/clipperMultiLanguage.csv`, // your csv file path
+  inputCSV:`${__dirname}/example.csv`, // your csv file path
   langList: defaultLangList,  // optional
   getLangPrefix: defaultGetLangPrefix, // optional
 });
