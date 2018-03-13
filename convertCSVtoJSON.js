@@ -1,77 +1,12 @@
 /** @module makei18n */
-
-const Json2csvParser = require('json2csv').Parser;
 const R = require('ramda');
-const fs = require('fs');
-const exec = require('child_process').exec;
-const rimraf = require('rimraf');
-const csv = require('csvtojson');
-const defaultLangList = ['EN', 'CHT', 'CHS', 'Czech', 'German', 'French', 'Spanish (Spain)', 'Italian',
-                'Japanese', 'Korean', 'Polish', 'Russian', 'Turkish', 'Thai', 'Portuguese',
-                'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish']; //23 countries
-const generateDir = (langList, getLangPrefix, inputCSV) => new Promise((resolve, reject) => {
-  rimraf.sync('./_locales');
-  fs.mkdirSync('_locales');
-  langList.map( (item, i) => {
-    fs.mkdirSync(`./_locales/${getLangPrefix(item)}`);
-  });
-  resolve(inputCSV);
-});
-const getLangString = (path) => new Promise((resolve, reject) => {
-  csv().fromFile(path).on('end_parsed',(jsonObj) => resolve(jsonObj));
-});
-const defaultGetLangPrefix = R.cond([
-  [R.equals('CHS'), R.always('zh_CN')],
-  [R.equals('CHT'), R.always('zh_TW')],
-  [R.equals('EN'), R.always('en')],
-  [R.equals('Korean'), R.always('ko')],
-  [R.equals('Japanese'), R.always('ja')],
-  [R.equals('Italian'), R.always('it')],
-  [R.equals('Danish'), R.always('da')],
-  [R.equals('Hungarian'), R.always('hu')],
-  [R.equals('Swedish'), R.always('sv')],
-  [R.equals('Russian'), R.always('ru')],
-  [R.equals('Czech'), R.always('cs')],
-  [R.equals('Dutch'), R.always('nl')],
-  [R.equals('Finnish'), R.always('fi')],
-  [R.equals('French'), R.always('fr')],
-  [R.equals('German'), R.always('de')],
-  [R.equals('Greek'), R.always('el')],
-  [R.equals('Norwegian'), R.always('no')],
-  [R.equals('Polish'), R.always('pl')],
-  [R.equals('Spanish (Spain)'), R.always('es')],
-  [R.equals('Turkish'), R.always('tr')],
-  [R.equals('Thai'), R.always('th')],
-  [R.equals('Romanian'), R.always('ro')],
-  [R.equals('Portuguese'), R.always('pt')],
-  [R.T, R.identity]
-]);
-const generateFile = R.curryN(3, (langList, getLangPrefix, mappingLangList) => new Promise((resolve, reject) => {
-  mappingLangList.map((item, i) => fs.appendFileSync(`./_locales/${getLangPrefix(langList[i])}/messages.json`, JSON.stringify(mappingLangList[i]), {encoding: 'utf8'}));
-  resolve();
-}));
-const generateLangList = R.curryN(2, (langList, langString) => new Promise((resolve, reject) => resolve(langList.reduce((acc, val) => {
-  const makeLangJson = R.pipe(
-    R.converge(R.zipObj, 
-      [
-        R.pluck('key'),
-        R.pipe(
-          R.pluck(val),
-          R.map(R.objOf('message'))
-        )
-      ]
-    ),
-  );
-  const langJson = makeLangJson(langString);
-  return [...acc, langJson];
-}, []))));
+const { generateDir, getLangString, defaultGetLangPrefix, generateFile, generateLangList, defaultLangList} = require('./lib/utility');
 
 /**
  * @description 
  *  To make your chrome extension i18n so easy. There is 23 countries language prefix in default and feel free to customize your own. <br>
  *  <b style="color:red">Note: </b><b>csv file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..."</b>
- * 
- * 
+ * ## csv file format
 <style>
 td {
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
@@ -118,48 +53,50 @@ code {
     <td>Others</td>
   </tr>
 </table>
+* ## Default params
 ```
-    const defaultGetLangPrefix = R.cond([
-      [R.equals('CHS'), R.always('zh_CN')],
-      [R.equals('CHT'), R.always('zh_TW')],
-      [R.equals('EN'), R.always('en')],
-      [R.equals('Korean'), R.always('ko')],
-      [R.equals('Japanese'), R.always('ja')],
-      [R.equals('Italian'), R.always('it')],
-      [R.equals('Danish'), R.always('da')],
-      [R.equals('Hungarian'), R.always('hu')],
-      [R.equals('Swedish'), R.always('sv')],
-      [R.equals('Russian'), R.always('ru')],
-      [R.equals('Czech'), R.always('cs')],
-      [R.equals('Dutch'), R.always('nl')],
-      [R.equals('Finnish'), R.always('fi')],
-      [R.equals('French'), R.always('fr')],
-      [R.equals('German'), R.always('de')],
-      [R.equals('Greek'), R.always('el')],
-      [R.equals('Norwegian'), R.always('no')],
-      [R.equals('Polish'), R.always('pl')],
-      [R.equals('Spanish (Spain)'), R.always('es')],
-      [R.equals('Turkish'), R.always('tr')],
-      [R.equals('Thai'), R.always('th')],
-      [R.equals('Romanian'), R.always('ro')],
-      [R.equals('Portuguese'), R.always('pt')],
-      [R.T, R.identity]
-    ]);
+const defaultGetLangPrefix = R.cond([
+  [R.equals('CHS'), R.always('zh_CN')],
+  [R.equals('CHT'), R.always('zh_TW')],
+  [R.equals('EN'), R.always('en')],
+  [R.equals('Korean'), R.always('ko')],
+  [R.equals('Japanese'), R.always('ja')],
+  [R.equals('Italian'), R.always('it')],
+  [R.equals('Danish'), R.always('da')],
+  [R.equals('Hungarian'), R.always('hu')],
+  [R.equals('Swedish'), R.always('sv')],
+  [R.equals('Russian'), R.always('ru')],
+  [R.equals('Czech'), R.always('cs')],
+  [R.equals('Dutch'), R.always('nl')],
+  [R.equals('Finnish'), R.always('fi')],
+  [R.equals('French'), R.always('fr')],
+  [R.equals('German'), R.always('de')],
+  [R.equals('Greek'), R.always('el')],
+  [R.equals('Norwegian'), R.always('no')],
+  [R.equals('Polish'), R.always('pl')],
+  [R.equals('Spanish (Spain)'), R.always('es')],
+  [R.equals('Turkish'), R.always('tr')],
+  [R.equals('Thai'), R.always('th')],
+  [R.equals('Romanian'), R.always('ro')],
+  [R.equals('Portuguese'), R.always('pt')],
+  [R.T, R.identity]
+]);
 ```
 ```
-  const defaultLangList = [
-    'EN', 'CHT', 'CHS', 'Czech', 'German', 'French', 'Spanish (Spain)', 'Italian',
-    'Japanese', 'Korean', 'Polish', 'Russian', 'Turkish', 'Thai', 'Portuguese',
-    'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'];
+const defaultLangList = [
+'EN', 'CHT', 'CHS', 'Czech', 'German', 'French', 'Spanish (Spain)', 'Italian',
+'Japanese', 'Korean', 'Polish', 'Russian', 'Turkish', 'Thai', 'Portuguese',
+'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'
+];
 ```
-* @example <caption>makei18n Usage</caption>
+* @example <caption>Example usage: </caption>
 makei18n({
-  inputCSV:`${__dirname}/clipperMultiLanguage.csv`,
+  inputCSV:`${__dirname}/clipperMultiLanguage.csv`, // your csv file path
   langList: defaultLangList,  // optional
   getLangPrefix: defaultGetLangPrefix, // optional
 });
  * @param {string} inputCSV - the path of your csv file
- * @param {array} [langList] you can input your own i18n list
+ * @param {array} [langList] you can provide your own i18n list
  * @param {function} [getLangPrefix] you can customize your own logic to prefix your language list
  */
 exports.makei18n = ({inputCSV, langList = defaultLangList, getLangPrefix = defaultGetLangPrefix}) =>
@@ -169,11 +106,3 @@ exports.makei18n = ({inputCSV, langList = defaultLangList, getLangPrefix = defau
     generateLangList(langList),
     generateFile(langList, getLangPrefix),
   )(langList, getLangPrefix, inputCSV)
-
-
-  // exports.makei18n = async ({inputCSV, langList = defaultLangList, getLangPrefix = defaultGetLangPrefix}) => {
-  //   await generateDir(langList, getLangPrefix, inputCSV);
-  //   const langString = await getLangString(inputCSV);
-  //   const mappingLangList = await generateLangList(langList, langString);
-  //   await generateFile(langList, getLangPrefix, mappingLangList);
-  // }

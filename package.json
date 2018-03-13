@@ -1,14 +1,23 @@
 {
-  "name": "clipperlang",
+  "name": "makei18n",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A chrome extension i18n maker",
+  "main": "convertCSVtoJSON.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "jsdoc": "node_modules/.bin/jsdoc -c jsdoc.json"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Bill YoungDi",
+  "license": "MIT",
+  "keywords": [
+    "chrome extension",
+    "i18n"
+  ],
+  "email": "u9951062@gmail.com",
+  "bugs": {
+    "url": "https://github.com/Youngdi/covertLangString/issues"
+  },
+  "homepage": "https://github.com/Youngdi/covertLangString#readme",
   "dependencies": {
     "csvtojson": "^1.1.9",
     "json2csv": "^4.0.2",
