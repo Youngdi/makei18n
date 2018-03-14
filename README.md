@@ -6,7 +6,7 @@ Have you ever struggled with dealing with dumb copy and paste to your i18n JSON 
 `makei18n` will helps you to make your `I18n JSON file` so easy.
 All you need to do is just tell `makei18n` your CSV file path then it will automatically generate `_locales` for you.
 It does not only provide your simple format but also support chrome extension format. Check it out.
-FYI, It transfers 23 countries' language into i18 format in default and feels free to customize your own.
+FYI, It transfers 23 countries' language into i18 format with default mode and feels free to customize your own.
 
 ## Installation
 1.  First you need have installed `node.js`. If not go [here](https://nodejs.org/en/) download it.

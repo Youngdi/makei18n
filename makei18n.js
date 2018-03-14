@@ -14,11 +14,11 @@ const {
 
 /**
  * @description 
- *  Have you ever struggled with dealing with dumb copy and paste to your i18n JSON file?
-    `makei18n` will helps you to make your `I18n JSON file` so easy.
-    All you need to do is just tell `makei18n` your CSV file path then it will automatically generate `_locales` for you.
-    It does not only provide your simple format but also support chrome extension format. Check it out.
-    FYI, It transfers 23 countries' language into i18 format in default and feels free to customize your own. <br>
+ *  <p>Have you ever struggled with dealing with dumb copy and paste to your i18n JSON file?</p>
+    <p>`makei18n` will helps you to make your `I18n JSON file` so easy.</p>
+    <p>All you need to do is just tell `makei18n` your CSV file path then it will automatically generate `_locales` for you.</p>
+    <p>It does not only provide your simple format but also support chrome extension format. Check it out.</p>
+    <p>FYI, It transfers 23 countries' language into i18 format with default mode and feels free to customize your own.</p>
  *  <p><b style="color:red">Note: </b><b>csv file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..."</b></p>
  *  <b><a href="https://github.com/Youngdi/makei18n/blob/master/example.csv">Check example.csv here</a></b>
  * ## csv file format
