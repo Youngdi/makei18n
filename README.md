@@ -7,7 +7,9 @@ Have you ever struggled with dealing with dumb copy and paste to your i18n JSON 
 All you need to do is just tell `makei18n` your CSV file path then it will automatically generate `_locales` for you.
 It does not only provide your simple format but also support chrome extension format. Check it out.
 FYI, It transfers 23 countries' language into i18 format with default mode and feels free to customize your own.
-
+## Features
+*  Automatic migration: it will write over value if i18n key is existed or add a new key.
+*  Effectively cooperation: it provides the standard format and easy to use for both of PM and RD
 ## Installation
 1.  First you need have installed `node.js`. If not go [here](https://nodejs.org/en/) download it.
 2.  `git clone https://github.com/Youngdi/makei18n`
