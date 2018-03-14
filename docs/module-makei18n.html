@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-makei18n.html">makei18n</a><ul class='methods'><li data-type='method'><a href="module-makei18n.html#.makei18n">makei18n</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-makei18n.html">makei18n</a><ul class='methods'><li data-type='method'><a href="module-makei18n.html#.makei18n">makei18n</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#generateLangList">generateLangList</a></li></ul>
 </nav>
 
 <div id="main">
@@ -72,7 +72,7 @@
 
     
 
-    <h4 class="name" id=".makei18n"><span class="type-signature">(static) </span>makei18n<span class="signature">(inputCSV, langList<span class="signature-attributes">opt</span>, getLangPrefix<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".makei18n"><span class="type-signature">(static) </span>makei18n<span class="signature">(inputCSV, inputDir<span class="signature-attributes">opt</span>, inputFileName<span class="signature-attributes">opt</span>, outputFileName<span class="signature-attributes">opt</span>, env<span class="signature-attributes">opt</span>, i18nLanguageTransfer<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -84,7 +84,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="convertCSVtoJSON.js.html">convertCSVtoJSON.js</a>, <a href="convertCSVtoJSON.js.html#line103">line 103</a>
+        <a href="makei18n.js.html">makei18n.js</a>, <a href="makei18n.js.html#line114">line 114</a>
     </li></ul></dd>
     
 
@@ -125,7 +125,8 @@
 
 <div class="description">
     <p>To make your chrome extension i18n so easy. There is 23 countries language prefix in default and feel free to customize your own. <br>
- <b style="color:red">Note: </b><b>csv file must follows this pattern &quot;key&quot;,&quot;EN&quot;,&quot;CHT&quot;,&quot;CHS&quot;,&quot;Czech&quot;,&quot;German&quot;,&quot;French&quot;,&quot;Others...&quot;</b></p>
+ <p><b style="color:red">Note: </b><b>csv file must follows this pattern &quot;key&quot;,&quot;EN&quot;,&quot;CHT&quot;,&quot;CHS&quot;,&quot;Czech&quot;,&quot;German&quot;,&quot;French&quot;,&quot;Others...&quot;</b></p>
+ <b><a href="https://github.com/Youngdi/makei18n/blob/master/example.csv">Check example.csv here</a></b></p>
 <h2>csv file format</h2><p><style>
 td {
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
@@ -172,7 +173,7 @@ code {
     <td>Others</td>
   </tr>
 </table></p>
-<h2>Default params</h2><pre class="prettyprint source"><code>const defaultGetLangPrefix = R.cond([
+<h2>Default params</h2><pre class="prettyprint source"><code>const defaultI18nLanguageTransfer = R.cond([
   [R.equals('CHS'), R.always('zh_CN')],
   [R.equals('CHT'), R.always('zh_TW')],
   [R.equals('EN'), R.always('en')],
@@ -197,11 +198,7 @@ code {
   [R.equals('Romanian'), R.always('ro')],
   [R.equals('Portuguese'), R.always('pt')],
   [R.T, R.identity]
-]);</code></pre><pre class="prettyprint source"><code>const defaultLangList = [
-'EN', 'CHT', 'CHS', 'Czech', 'German', 'French', 'Spanish (Spain)', 'Italian',
-'Japanese', 'Korean', 'Polish', 'Russian', 'Turkish', 'Thai', 'Portuguese',
-'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'
-];</code></pre>
+]);</code></pre>
 </div>
 
 
@@ -218,9 +215,12 @@ code {
     
     <pre class="prettyprint"><code>const { makei18n } = require('makei18n');
 makei18n({
-  inputCSV:`${__dirname}/example.csv`, // your csv file path
-  langList: defaultLangList,  // optional
-  getLangPrefix: defaultGetLangPrefix, // optional
+  inputCSV:`${__dirname}/example.csv`,                  // your csv file path
+  // inputDir: './_locales',                            // optional 
+  // inputFileName = 'messages.json',                   // optional 
+  // outputFileName = 'messages.json',                  // optional 
+  // env: '',                                           // optional, it can be ChromeExtension
+  // i18nLanguageTransfer: defaultI18nLanguageTransfer, // optional
 });</code></pre>
 
 
@@ -242,6 +242,8 @@ makei18n({
         <th>Attributes</th>
         
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -276,6 +278,10 @@ makei18n({
             
 
             
+                <td class="default">
+                
+                </td>
+            
 
             <td class="description last"><p>the path of your csv file</p></td>
         </tr>
@@ -284,13 +290,13 @@ makei18n({
 
         <tr>
             
-                <td class="name"><code>langList</code></td>
+                <td class="name"><code>inputDir</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
+<span class="param-type">string</span>
 
 
             
@@ -309,15 +315,138 @@ makei18n({
             
 
             
+                <td class="default">
+                
+                    <code>'./_locales'</code>
+                
+                </td>
+            
 
-            <td class="description last"><p>you can provide your own i18n list</p></td>
+            <td class="description last"><p>the path of your i18n folder</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>getLangPrefix</code></td>
+                <td class="name"><code>inputFileName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>'messages.json'</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>the name of your i18n json file</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>outputFileName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>'messages.json'</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>the name of the output file</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>env</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>''</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>default is without object with message key or you can pass <code>ChromeExtension</code> for object with message key</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>i18nLanguageTransfer</code></td>
             
 
             <td class="type">
@@ -341,6 +470,12 @@ makei18n({
                 </td>
             
 
+            
+                <td class="default">
+                
+                    <code>String -> String</code>
+                
+                </td>
             
 
             <td class="description last"><p>you can customize your own logic function to prefix your language list</p></td>
@@ -383,7 +518,7 @@ makei18n({
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 13 2018 17:13:40 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Mar 14 2018 16:18:19 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

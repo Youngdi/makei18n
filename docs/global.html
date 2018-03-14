@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-makei18n.html">makei18n</a></li></ul><h3>Global</h3><ul><li><a href="global.html#makei18n">makei18n</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-makei18n.html">makei18n</a><ul class='methods'><li data-type='method'><a href="module-makei18n.html#.makei18n">makei18n</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#generateLangList">generateLangList</a></li></ul>
 </nav>
 
 <div id="main">
@@ -115,7 +115,7 @@
 
     
 
-    <h4 class="name" id="makei18n"><span class="type-signature"></span>makei18n<span class="signature">(inputCSV, langList<span class="signature-attributes">opt</span>, getLangPrefix<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="generateLangList"><span class="type-signature"></span>generateLangList<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -127,7 +127,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="convertCSVtoJSON.js.html">convertCSVtoJSON.js</a>, <a href="convertCSVtoJSON.js.html#line115">line 115</a>
+        <a href="lib_utility.js.html">lib/utility.js</a>, <a href="lib_utility.js.html#line142">line 142</a>
     </li></ul></dd>
     
 
@@ -167,46 +167,8 @@
 
 
 <div class="description">
-    <p>To make your chrome extension i18n so easy. There is 23 countries language prefix in default and feel free to customize your own.
-note: csv file must follows this pattern key&quot;,&quot;EN&quot;,&quot;CHT&quot;,&quot;CHS&quot;,&quot;Czech&quot;,&quot;German&quot;,&quot;French&quot;,&quot;Spanish (Spain)&quot;
-|         key             | EN        | CHT | CHS | others |
-   | ----------------------- | --------- |-----| ----| ------ |
-   | msg_btn_close_divLogin  | Close     | 關閉 | 关闭 | others|
-   | msg_btn_back            |  Back     | 回上一頁 |回上页 | others|
-   | msg_txtCloud_Password   | Please enter your password  | 請輸入密碼 | 请输入密码 | others|</p>
-<pre class="prettyprint source"><code>    makei18n({
-      inputCSV:`${__dirname}/clipperMultiLanguage.csv`,
-      langList: defaultLangList,  // optional
-      getLangPrefix: GetLangPrefix, // optional
-    });</code></pre><pre class="prettyprint source"><code>    const defaultGetLangPrefix = R.cond([
-      [R.equals('CHS'), R.always('zh_CN')],
-      [R.equals('CHT'), R.always('zh_TW')],
-      [R.equals('EN'), R.always('en')],
-      [R.equals('Korean'), R.always('ko')],
-      [R.equals('Japanese'), R.always('ja')],
-      [R.equals('Italian'), R.always('it')],
-      [R.equals('Danish'), R.always('da')],
-      [R.equals('Hungarian'), R.always('hu')],
-      [R.equals('Swedish'), R.always('sv')],
-      [R.equals('Russian'), R.always('ru')],
-      [R.equals('Czech'), R.always('cs')],
-      [R.equals('Dutch'), R.always('nl')],
-      [R.equals('Finnish'), R.always('fi')],
-      [R.equals('French'), R.always('fr')],
-      [R.equals('German'), R.always('de')],
-      [R.equals('Greek'), R.always('el')],
-      [R.equals('Norwegian'), R.always('no')],
-      [R.equals('Polish'), R.always('pl')],
-      [R.equals('Spanish (Spain)'), R.always('es')],
-      [R.equals('Turkish'), R.always('tr')],
-      [R.equals('Thai'), R.always('th')],
-      [R.equals('Romanian'), R.always('ro')],
-      [R.equals('Portuguese'), R.always('pt')],
-      [R.T, R.identity]
-    ]);</code></pre><pre class="prettyprint source"><code>  const defaultLangList = [
-    'EN', 'CHT', 'CHS', 'Czech', 'German', 'French', 'Spanish (Spain)', 'Italian',
-    'Japanese', 'Korean', 'Polish', 'Russian', 'Turkish', 'Thai', 'Portuguese',
-    'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'];</code></pre>
+    <p>migratedJSONWithConfig :: [Object] dirLangList, String val  =&gt; (dirLangList, val, i18nLanguageTransfer) -&gt; Object
+generateLangList :: ([String], String -&gt; String, migratedJSONWithConfig) -&gt; [Object] -&gt; Promise [Object]</p>
 </div>
 
 
@@ -217,131 +179,6 @@ note: csv file must follows this pattern key&quot;,&quot;EN&quot;,&quot;CHT&quot
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>inputCSV</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the path of your csv file</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>langList</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>input your own i18n list</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>getLangPrefix</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>customize your own logic to prefix your language list</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -376,7 +213,7 @@ note: csv file must follows this pattern key&quot;,&quot;EN&quot;,&quot;CHT&quot
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 13 2018 11:25:36 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Mar 14 2018 16:18:19 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

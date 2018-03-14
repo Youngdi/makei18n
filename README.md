@@ -10,7 +10,7 @@ Run: `$ npm install makei18n --save`
 ## csv file format
 `Note`: csv file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..." 
 
-[just go check example.csv here](https://github.com/Youngdi/makei18n/blob/master/example.csv)
+[Check example.csv here](https://github.com/Youngdi/makei18n/blob/master/example.csv)
 
 |         key         | EN | CHT | CHS | Others.. |
 |---|---|---|---|---|
@@ -27,9 +27,20 @@ makei18n({
   getLangPrefix: defaultGetLangPrefix, // optional
 });
 ```
+### Parameters - [JSdoc api](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
+
+| Property | Type | Attributes | Default | Description |
+|---|---|---|---|---|
+| `inputCSV`  | string | required |   | the path of your csv file |
+| `inputDir` | string | optional| `'./_locales'`  | the path of your i18n folder |
+| `inputFileName` | string | optional| `'messages.json'`  | the name of your i18n json file |
+| `outputFileName` | string | optional| `'messages.json'`  | the name of the output file |
+| `env` | string | optional| `''`  | default is without object with message key or you can pass `ChromeExtension` for object with message key |
+| `i18nLanguageTransfer` | function | optional| String -> String |you can customize your own logic function to prefix your language list |
+
 ## Default params
 ```
-const defaultGetLangPrefix = R.cond([
+const i18nLanguageTransfer = R.cond([
   [R.equals('CHS'), R.always('zh_CN')],
   [R.equals('CHT'), R.always('zh_TW')],
   [R.equals('EN'), R.always('en')],
@@ -56,20 +67,6 @@ const defaultGetLangPrefix = R.cond([
   [R.T, R.identity]
 ]);
 ```
-```
-const defaultLangList = [
-'EN', 'CHT', 'CHS', 'Czech', 'German', 'French', 'Spanish (Spain)', 'Italian',
-'Japanese', 'Korean', 'Polish', 'Russian', 'Turkish', 'Thai', 'Portuguese',
-'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'
-];
-```
-### Parameters - [JSdoc api](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
-
-| Name | Type | Attributes | Description |
-|---|---|---|---|
-| `inputCSV`  | string | required |the path of your csv file|
-| `langList` | array | optional| you can provide your own i18n list |
-| `getLangPrefix` | function | optional| you can customize your own logic function to prefix your language list |
 
 ## License
 
