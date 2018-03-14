@@ -3,10 +3,10 @@
 ![N|Solid](https://i.imgur.com/QPlwHgC.png?1)
 
 To make your `chrome extension i18n` so easy. Just input your csv file then it will automatic generate `_locales` for you. 
-There is 23 countries language prefix in default and feel free to customize your own. 
+It transfers 23 countries's language into i18 format in default and feel free to customize your own.
 
 ## Installation
-Run: `$ npm install makei18n --save`
+Run: `npm install makei18n --save`
 ## csv file format
 `Note`: csv file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..." 
 
@@ -17,14 +17,17 @@ Run: `$ npm install makei18n --save`
 | msg_btn_close_divLogine  | close| 關閉|关闭|Others...|
 | msg_btn_back | back | 回上一頁| 回上一页 | Others...|
 
-### Example usage: 
+### Example Usage: 
 
 ```
 const { makei18n } = require('makei18n');
 makei18n({
-  inputCSV:`${__dirname}/example.csv`, // your csv file path
-  langList: defaultLangList,  // optional
-  getLangPrefix: defaultGetLangPrefix, // optional
+  inputCSV:`${__dirname}/example.csv`,                  // your csv file path
+  // inputDir: './_locales',                            // optional 
+  // inputFileName = 'messages.json',                   // optional 
+  // outputFileName = 'messages.json',                  // optional 
+  // env: '',                                           // optional, it can be ChromeExtension
+  // i18nLanguageTransfer: defaultI18nLanguageTransfer, // optional
 });
 ```
 ### Parameters - [JSdoc api](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
