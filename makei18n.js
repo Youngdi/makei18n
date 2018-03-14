@@ -1,6 +1,17 @@
 /** @module makei18n */
 const R = require('ramda');
-const { generateDir, getCSVLangList, defaultGetLangPrefix, makeJSONfile, generateLangList, defaultLangList, migratedJSON, makeLangJSON } = require('./lib/utility');
+const { 
+  generateDir,
+  getCSVLangList,
+  defaultI18nLanguageTransfer,
+  makeJSONfile,
+  generateLangList,
+  defaultLangList,
+  migratedJSON,
+  makeLangJSON,
+  getDirLangList
+} = require('./lib/utility');
+
 /**
  * @description 
  *  To make your chrome extension i18n so easy. There is 23 countries language prefix in default and feel free to customize your own. <br>
@@ -54,7 +65,7 @@ code {
 </table>
 * ## Default params
 ```
-const defaultGetLangPrefix = R.cond([
+const defaultI18nLanguageTransfer = R.cond([
   [R.equals('CHS'), R.always('zh_CN')],
   [R.equals('CHT'), R.always('zh_TW')],
   [R.equals('EN'), R.always('en')],
@@ -93,16 +104,15 @@ const { makei18n } = require('makei18n');
 makei18n({
   inputCSV:`${__dirname}/example.csv`, // your csv file path
   // langList: defaultLangList,  // optional
-  // getLangPrefix: defaultGetLangPrefix, // optional
+  // getLangPrefix: defaultI18nLanguageTransfer, // optional
 });
  * @param {string} inputCSV - the path of your csv file
  * @param {array} [langList] you can provide your own i18n list
  * @param {function} [getLangPrefix] you can customize your own logic function to prefix your language list
  */
-exports.makei18n = ({
+exports.makei18n = async ({
     inputCSV,
-    langList = defaultLangList,
-    getLangPrefix = defaultGetLangPrefix,
+    i18nLanguageTransfer = defaultI18nLanguageTransfer,
     env = '',
     outputFileName = 'messages.json',
     inputDir = './_locales',
@@ -111,13 +121,13 @@ exports.makei18n = ({
   {
     const makeLangJSONWithEnv = makeLangJSON(env == 'ChromeExtension' ? R.objOf('message') : R.identity);
     const migratedJSONWithConfig = migratedJSON(env, inputDir, inputFileName, makeLangJSONWithEnv);
+    const dirLangList = await getDirLangList(inputCSV);
+
     return R.pipeP(
       generateDir,
-      getCSVLangList,
-      generateLangList(langList, getLangPrefix, migratedJSONWithConfig),
-      makeJSONfile(langList, getLangPrefix, env, outputFileName),
-    )(langList, getLangPrefix, inputCSV)
+      getCSVLangList(inputCSV),
+      generateLangList(dirLangList, i18nLanguageTransfer, migratedJSONWithConfig),
+      makeJSONfile(dirLangList, i18nLanguageTransfer, env, outputFileName),
+    )(dirLangList, i18nLanguageTransfer)
   }
-  
-
   
