@@ -14,7 +14,11 @@ const {
 
 /**
  * @description 
- *  To make your chrome extension i18n so easy. There is 23 countries language prefix in default and feel free to customize your own. <br>
+ *  Have you ever struggled with dealing with dumb copy and paste to your i18n JSON file?
+    `makei18n` will helps you to make your `I18n JSON file` so easy.
+    All you need to do is just tell `makei18n` your CSV file path then it will automatically generate `_locales` for you.
+    It does not only provide your simple format but also support chrome extension format. Check it out.
+    FYI, It transfers 23 countries' language into i18 format in default and feels free to customize your own. <br>
  *  <p><b style="color:red">Note: </b><b>csv file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..."</b></p>
  *  <b><a href="https://github.com/Youngdi/makei18n/blob/master/example.csv">Check example.csv here</a></b>
  * ## csv file format
@@ -108,7 +112,7 @@ makei18n({
  * @param {string} [inputDir = './_locales'] - the path of your i18n folder
  * @param {string} [inputFileName = 'messages.json'] - the name of your i18n json file
  * @param {string} [outputFileName = 'messages.json'] - the name of the output file
- * @param {string} [env = ''] - default is without object with message key or you can pass `ChromeExtension` for object with message key
+ * @param {string} [env = ''] - the default is without object with message key or you can pass `ChromeExtension` for the object with the message key
  * @param {function} [i18nLanguageTransfer = String -> String] you can customize your own logic function to prefix your language list
  */
 exports.makei18n = async ({

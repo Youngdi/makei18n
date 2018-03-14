@@ -2,13 +2,21 @@
  
 ![N|Solid](https://i.imgur.com/QPlwHgC.png?1)
 
-To make your `chrome extension i18n` so easy. Just input your csv file then it will automatic generate `_locales` for you. 
-It transfers 23 countries's language into i18 format in default and feel free to customize your own.
+Have you ever struggled with dealing with dumb copy and paste to your i18n JSON file?
+`makei18n` will helps you to make your `I18n JSON file` so easy.
+All you need to do is just tell `makei18n` your CSV file path then it will automatically generate `_locales` for you.
+It does not only provide your simple format but also support chrome extension format. Check it out.
+FYI, It transfers 23 countries' language into i18 format in default and feels free to customize your own.
 
 ## Installation
-Run: `npm install makei18n --save`
-## csv file format
-`Note`: csv file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..." 
+1.  First you need have installed `node.js`. If not go [here](https://nodejs.org/en/) download it.
+2.  `git clone https://github.com/Youngdi/makei18n`
+3.  `cd example`
+4.  `npm install makei18n --save`
+5.  `node index.js`
+6.  Check your folder it should have the `_locales` document with i18n JSON
+## CSV file format
+`Note`: CSV file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..." 
 
 [Check example.csv here](https://github.com/Youngdi/makei18n/blob/master/example.csv)
 
@@ -34,12 +42,12 @@ makei18n({
 
 | Property | Type | Attributes | Default | Description |
 |---|---|---|---|---|
-| `inputCSV`  | string | required |   | the path of your csv file |
+| `inputCSV`  | string | required |   | the path of your CSV file |
 | `inputDir` | string | optional| `'./_locales'`  | the path of your i18n folder |
-| `inputFileName` | string | optional| `'messages.json'`  | the name of your i18n json file |
+| `inputFileName` | string | optional| `'messages.json'`  | the name of your i18n JSON file |
 | `outputFileName` | string | optional| `'messages.json'`  | the name of the output file |
-| `env` | string | optional| `''`  | default is without object with message key or you can pass `ChromeExtension` for object with message key |
-| `i18nLanguageTransfer` | function | optional| String -> String |you can customize your own logic function to prefix your language list |
+| `env` | string | optional| `''`  | the default is without object with message key or you can pass `ChromeExtension` for the object with the message key |
+| `i18nLanguageTransfer` | function | optional| String -> String |you can customize your own logic function to transfer your language list |
 
 ## Default params
 ```
@@ -73,5 +81,5 @@ const i18nLanguageTransfer = R.cond([
 
 ## License
 
-This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).
+This project is licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
 Any bundled fonts are copyright to their respective authors and mostly under MIT or [SIL OFL](http://scripts.sil.org/OFL).
