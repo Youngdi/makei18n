@@ -54,10 +54,11 @@ makei18n({
   outputFileName: 'messages.json', // messages.json
   // env: 'ChromeExtension',
 });
-setTimeout(() => {
-  makei18nCSV({
-    inputDir: './_locales',
-    inputFileName: 'messages.json',
-    outputFile: 'test.csv',
-  });
-}, 2000);
+
+// setTimeout(() => {
+//   makei18nCSV({
+//     inputDir: './_locales',
+//     inputFileName: 'messages.json',
+//     outputFile: 'test.csv',
+//   });
+// }, 2000);

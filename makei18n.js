@@ -1,6 +1,6 @@
 /** @module makei18n */
 const R = require('ramda');
-const { generateDir, getLangString, defaultGetLangPrefix, makeJSONfile, generateLangList, defaultLangList} = require('./lib/utility');
+const { generateDir, getCSVLangList, defaultGetLangPrefix, makeJSONfile, generateLangList, defaultLangList, migratedJSON, makeLangJSON } = require('./lib/utility');
 /**
  * @description 
  *  To make your chrome extension i18n so easy. There is 23 countries language prefix in default and feel free to customize your own. <br>
@@ -108,9 +108,16 @@ exports.makei18n = ({
     inputDir = './_locales',
     inputFileName = 'messages.json',
   }) =>
-  R.pipeP(
-    generateDir,
-    getLangString,
-    generateLangList(langList, env, inputFileName, inputDir, getLangPrefix),
-    makeJSONfile(langList, getLangPrefix, env, outputFileName),
-  )(langList, getLangPrefix, inputCSV)
+  {
+    const makeLangJSONWithEnv = makeLangJSON(env == 'ChromeExtension' ? R.objOf('message') : R.identity);
+    const migratedJSONWithConfig = migratedJSON(env, inputDir, inputFileName, makeLangJSONWithEnv);
+    return R.pipeP(
+      generateDir,
+      getCSVLangList,
+      generateLangList(langList, getLangPrefix, migratedJSONWithConfig),
+      makeJSONfile(langList, getLangPrefix, env, outputFileName),
+    )(langList, getLangPrefix, inputCSV)
+  }
+  
+
+  
