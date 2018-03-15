@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-makei18n.html">makei18n</a><ul class='methods'><li data-type='method'><a href="module-makei18n.html#.makei18n">makei18n</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#generateLangList">generateLangList</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-makei18n.html">makei18n</a><ul class='methods'><li data-type='method'><a href="module-makei18n.html#.makei18n">makei18n</a></li></ul></li><li><a href="module-makei18nCSV.html">makei18nCSV</a><ul class='methods'><li data-type='method'><a href="module-makei18nCSV.html#.makei18nCSV">makei18nCSV</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#generateLangList">generateLangList</a></li></ul>
 </nav>
 
 <div id="main">
@@ -37,7 +37,9 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Json2csvParser = require('json2csv').Parser;
+            <pre class="prettyprint source linenums"><code>
+
+const Json2csvParser = require('json2csv').Parser;
 const R = require('ramda');
 const fs = require('fs');
 const exec = require('child_process').exec;
@@ -51,27 +53,24 @@ const getI18nLangString = R.curryN(2, R.pipe(
 ));
 const getRawLangString = R.curryN(3, (inputDir, inputFileName, lang) => fs.existsSync(`${inputDir}/${lang}/${inputFileName}`) ? JSON.parse(fs.readFileSync(`${inputDir}/${lang}/${inputFileName}`, 'utf8')) : {});
 const checkChromeExtension = R.cond([
+  [R.pipe(R.prop('message'), R.isEmpty), R.always('')],
   [R.prop('message'), R.prop('message')],
   [R.T, R.identity],
 ]);
 
-exports.defaultFields = [
-'key', 'EN', 'CHT', 'CHS', 'Czech', 'German', 'French', 'Spanish (Spain)', 'Italian',
-'Japanese', 'Korean', 'Polish', 'Russian', 'Turkish', 'Thai', 'Portuguese',
-'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'
-];
+exports.normalizationLang = (inputDir, inputFileName, i18nLanguageTransfer) => (langList) => langList.reduce((acc, lang, i) => {
+    const i18nlang = i18nLanguageTransfer(lang);
+    const langString = getI18nLangString(lang, getRawLangString(inputDir, inputFileName, i18nlang));
+    return (i &lt; 2) ? langString: R.zipWith(R.merge, langString, acc);
+}, []);
 
-exports.normalizationLang = R.curryN(4, (inputDir, inputFileName, convertLangPrefix, dirList) => dirList.reduce((acc, val, i) => {
-  const langPrefix = convertLangPrefix(val);
-  const langString = getI18nLangString(langPrefix, getRawLangString(inputDir, inputFileName, val));
-  return i == 0 ? langString: R.zipWith(R.merge, langString, acc);
-}, []));
+exports.i18nKeyToCSVwithPreload = (i18nKeyToCSV) => (dirlangList) => R.pipe(R.map(i18nKeyToCSV),R.insert(0, 'key'))(dirlangList),
 
-exports.json2csvConverter = R.curryN(2, (fields, data) => new Json2csvParser({ fields }).parse(data));
+exports.json2csvConverter = R.curryN(2, (data, fields) => new Json2csvParser({ fields }).parse(data));
 
 exports.getDirList = (inputDir) => fs.readdirSync(inputDir);
 
-exports.makeCSVFile = R.curryN(2 , (outputFile, data) => fs.writeFileSync(`./${outputFile}`, data, {encoding: 'utf8'}));
+exports.makeCSVFile = R.curryN(2 , (outputFileName, data) => fs.writeFileSync(`./${outputFileName}`, data, {encoding: 'utf8'}));
 
 exports.generateDir = async (langList, i18nLanguageTransfer) =>  {
   const exists = fs.existsSync('./_locales');
@@ -92,7 +91,6 @@ exports.generateDir = async (langList, i18nLanguageTransfer) =>  {
 exports.getCSVLangList = (path) => () => new Promise((resolve, reject) => {
   csv().fromFile(path).on('end_parsed', (jsonObj) => resolve(jsonObj));
 });
-
 
 exports.defaultI18nLanguageTransfer = R.cond([
   [R.equals('CHS'), R.always('zh_CN')],
@@ -121,7 +119,7 @@ exports.defaultI18nLanguageTransfer = R.cond([
   [R.T, R.identity]
 ]);
 
-exports.defaultConvertLangPrefix = R.cond([
+exports.defaultI18nKeyToCSV = R.cond([
   [R.equals('zh_CN'), R.always('CHS')],
   [R.equals('zh_TW'), R.always('CHT')],
   [R.equals('en'), R.always('EN')],
@@ -167,7 +165,7 @@ exports.makeLangJSON = (envPreloadFN) => (val) => (langString) => R.pipe(
   ),
 )(langString);
 
-exports.migratedJSON =  (env, inputDir, inputFileName, makeLangJSONWithEnv) => (langString, val, langPrefix) => 
+exports.migrateJSON =  (env, inputDir, inputFileName, makeLangJSONWithEnv) => (langString, val, langPrefix) => 
    R.useWith(R.merge, [
     getRawLangString(inputDir, inputFileName), // previousJSON
     makeLangJSONWithEnv(val), // newLangJSON
@@ -175,20 +173,15 @@ exports.migratedJSON =  (env, inputDir, inputFileName, makeLangJSONWithEnv) => (
   (langPrefix, langString)
 
 /**
- * migratedJSONWithConfig :: [Object] dirLangList, String val  => (dirLangList, val, i18nLanguageTransfer) -> Object
- * generateLangList :: ([String], String -> String, migratedJSONWithConfig) -> [Object] -> Promise [Object]
+ * migrateJSONWithConfig :: [Object] dirLangList, String val  => (dirLangList, val, i18nLanguageTransfer) -> Object
+ * generateLangList :: ([String], String -> String, migrateJSONWithConfig) -> [Object] -> Promise [Object]
  */
-exports.generateLangList = (dirLangList, i18nLanguageTransfer, migratedJSONWithConfig) => async (csvLangList) => dirLangList.reduce((acc, val) => [...acc, migratedJSONWithConfig(csvLangList, val, i18nLanguageTransfer(val))], []);
+exports.generateLangList = (dirLangList, i18nLanguageTransfer, migrateJSONWithConfig) => async (csvLangList) => dirLangList.reduce((acc, val) => [...acc, migrateJSONWithConfig(csvLangList, val, i18nLanguageTransfer(val))], []);
 
 exports.getDirLangList = (path) => new Promise((resolve, reject) => {
   csv().fromFile(path).on('end_parsed', (jsonObj) => resolve(R.without(['key'], R.keys(jsonObj[0]))));
 });
 
-exports.defaultLangList = [
-  'EN', 'CHT', 'CHS', 'Czech', 'German', 'French', 'Spanish (Spain)', 'Italian',
-  'Japanese', 'Korean', 'Polish', 'Russian', 'Turkish', 'Thai', 'Portuguese',
-  'Hungarian', 'Romanian', 'Danish', 'Dutch', 'Finnish', 'Greek', 'Norwegian', 'Swedish'
-]; //23 countries
 </code></pre>
         </article>
     </section>
@@ -201,7 +194,7 @@ exports.defaultLangList = [
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Mar 14 2018 16:53:53 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Mar 15 2018 16:42:45 GMT+0800 (CST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>makei18n - Documentation</title>
+    <title>makei18nCSV - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">makei18n</h1>
+    <h1 class="page-title">makei18nCSV</h1>
     
 
     
@@ -72,7 +72,7 @@
 
     
 
-    <h4 class="name" id=".makei18n"><span class="type-signature">(static) </span>makei18n<span class="signature">(inputCSV, inputDir<span class="signature-attributes">opt</span>, inputFileName<span class="signature-attributes">opt</span>, outputFileName<span class="signature-attributes">opt</span>, env<span class="signature-attributes">opt</span>, i18nLanguageTransfer<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".makei18nCSV"><span class="type-signature">(static) </span>makei18nCSV<span class="signature">(inputDir, inputFileName, outputFileName, i18nKeyToCSV<span class="signature-attributes">opt</span>, i18nLanguageTransfer<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -84,7 +84,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="makei18n.js.html">makei18n.js</a>, <a href="makei18n.js.html#line117">line 117</a>
+        <a href="makei18nCSV.js.html">makei18nCSV.js</a>, <a href="makei18nCSV.js.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -124,60 +124,43 @@
 
 
 <div class="description">
-    <p><p>Have you ever struggled with dealing with dumb copy and paste to your i18n JSON file?</p>
-    <p><code>makei18n</code> will helps you to make your <code>I18n JSON file</code> so easy.</p>
-    <p>All you need to do is just tell <code>makei18n</code> your CSV file path then it will automatically generate <code>_locales</code> for you.</p>
-    <p>It does not only provide your simple format but also support chrome extension format. Check it out.</p>
-    <p>FYI, It transfers 23 countries' language into i18 format with default mode and feels free to customize your own.</p>
- <p><b style="color:red">Note: </b><b>csv file must follows this pattern &quot;key&quot;,&quot;EN&quot;,&quot;CHT&quot;,&quot;CHS&quot;,&quot;Czech&quot;,&quot;German&quot;,&quot;French&quot;,&quot;Others...&quot;</b></p>
- <b><a href="https://github.com/Youngdi/makei18n/blob/master/example.csv">Check example.csv here</a></b></p>
-<h2>csv file format</h2><p><style>
-td {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  box-sizing: border-box;
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-th {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  margin: 0px;
-  text-align: left;
-  border: 1px solid #dddddd;
-  vertical-align: top;
-  padding: 10px;
-  display: table-cell;
-  font-weight: 700;
-}
-code {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  background: #f4f4f4;
-}
-</style></p>
-<p><table style="border-spacing: 0; border: 1px solid #ddd; border-collapse: collapse; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); width: 100%; font-size: 14px; margin: 1em 0; color: #4d4e53; font-family: 'Helvetica Neue', Helvetica, sans-serif; line-height: 160%;">
-  <tr>
-    <th>key</th>
-    <th>EN</th>
-    <th>CHT</th>
-    <th>CHS</th>
-    <th>Others</th>
-  </tr>
-  <tr>
-    <td><code>msg_btn_close_divLogine</code></td>
-    <td>Close</td>
-    <td>關閉</td>
-    <td>关闭</td>
-    <td>Others</td>
-  </tr>
-  <tr>
-    <td><code>msg_btn_back</code></td>
-    <td>Back</td>
-    <td>回上一頁</td>
-    <td>回上一页</td>
-    <td>Others</td>
-  </tr>
-</table></p>
-<h2>Default params</h2><pre class="prettyprint source"><code>const defaultI18nLanguageTransfer = R.cond([
+    <p><p>makei18nCSV helps your to make a standard format of your i18n csv file</p>
+ <p><b style="color:red">Note: </b><b>_locales folder structure must follows the pattern</b></p></p>
+<pre class="prettyprint source lang-sh"><code>   _locales
+      cs -> messages.json 
+      de -> messages.json
+      en -> messages.json
+      fr -> messages.json
+      ja -> messages.json
+      zh_TW -> messages.json
+      zh_CN -> messages.json
+      ...others i18n -> messages.json</code></pre><p> <b><a href="https://github.com/Youngdi/makei18n/tree/master/_locales">Check _locales structure here</a></b></p>
+<h2>Default params</h2><pre class="prettyprint source"><code>const defaultI18nKeyToCSV = R.cond([
+  [R.equals('zh_CN'), R.always('CHS')],
+  [R.equals('zh_TW'), R.always('CHT')],
+  [R.equals('en'), R.always('EN')],
+  [R.equals('ko'), R.always('Korean')],
+  [R.equals('ja'), R.always('Japanese')],
+  [R.equals('it'), R.always('Italian')],
+  [R.equals('da'), R.always('Danish')],
+  [R.equals('hu'), R.always('Hungarian')],
+  [R.equals('sv'), R.always('Swedish')],
+  [R.equals('ru'), R.always('Russian')],
+  [R.equals('cs'), R.always('Czech')],
+  [R.equals('nl'), R.always('Dutch')],
+  [R.equals('fi'), R.always('Finnish')],
+  [R.equals('fr'), R.always('French')],
+  [R.equals('de'), R.always('German')],
+  [R.equals('el'), R.always('Greek')],
+  [R.equals('no'), R.always('Norwegian')],
+  [R.equals('pl'), R.always('Polish')],
+  [R.equals('es'), R.always('Spanish (Spain)')],
+  [R.equals('tr'), R.always('Turkish')],
+  [R.equals('th'), R.always('Thai')],
+  [R.equals('ro'), R.always('Romanian')],
+  [R.equals('pt'), R.always('Portuguese')],
+  [R.T, R.identity]
+]);</code></pre><pre class="prettyprint source"><code>const defaultI18nLanguageTransfer = R.cond([
   [R.equals('CHS'), R.always('zh_CN')],
   [R.equals('CHT'), R.always('zh_TW')],
   [R.equals('EN'), R.always('en')],
@@ -217,14 +200,14 @@ code {
     
         <p class="code-caption">Example usage: </p>
     
-    <pre class="prettyprint"><code>const { makei18n } = require('makei18n');
-makei18n({
-  inputCSV:`${__dirname}/example.csv`,                  // your csv file path
-  // inputDir: './_locales',                            // optional 
-  // inputFileName = 'messages.json',                   // optional 
-  // outputFileName = 'messages.json',                  // optional 
-  // env: '',                                           // optional, it can be ChromeExtension
-  // i18nLanguageTransfer: defaultI18nLanguageTransfer, // optional
+    <pre class="prettyprint"><code>const { makei18nCSV } = require('makei18n');
+makei18nCSV({
+  inputDir: './_locales',
+  inputFileName: 'messages.json',
+  outputFileName: 'test.csv',
+  // i18nKeyToCSV = defaultI18nKeyToCSV, // optional 
+  // i18nLanguageTransfer = defaultI18nLanguageTransfer, // optional 
+});
 });</code></pre>
 
 
@@ -259,41 +242,6 @@ makei18n({
 
         <tr>
             
-                <td class="name"><code>inputCSV</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>the path of your csv file</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>inputDir</code></td>
             
 
@@ -309,8 +257,6 @@ makei18n({
             
                 <td class="attributes">
                 
-                    &lt;optional><br>
-                
 
                 
 
@@ -320,8 +266,6 @@ makei18n({
 
             
                 <td class="default">
-                
-                    <code>'./_locales'</code>
                 
                 </td>
             
@@ -348,8 +292,6 @@ makei18n({
             
                 <td class="attributes">
                 
-                    &lt;optional><br>
-                
 
                 
 
@@ -360,12 +302,10 @@ makei18n({
             
                 <td class="default">
                 
-                    <code>'messages.json'</code>
-                
                 </td>
             
 
-            <td class="description last"><p>the name of your i18n json file</p></td>
+            <td class="description last"><p>the name of your i18n file</p></td>
         </tr>
 
     
@@ -387,8 +327,6 @@ makei18n({
             
                 <td class="attributes">
                 
-                    &lt;optional><br>
-                
 
                 
 
@@ -399,25 +337,23 @@ makei18n({
             
                 <td class="default">
                 
-                    <code>'messages.json'</code>
-                
                 </td>
             
 
-            <td class="description last"><p>the name of the output file</p></td>
+            <td class="description last"><p>the name of your i18n json file</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>env</code></td>
+                <td class="name"><code>i18nKeyToCSV</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">function</span>
 
 
             
@@ -438,12 +374,12 @@ makei18n({
             
                 <td class="default">
                 
-                    <code>''</code>
+                    <code>String -> String</code>
                 
                 </td>
             
 
-            <td class="description last"><p>the default is without object with message key or you can pass <code>ChromeExtension</code> for the object with the message key</p></td>
+            <td class="description last"><p>you can customize your own logic function to transfer your i18n key. Note: it must be a symmetry with i18nLanguageTransfer</p></td>
         </tr>
 
     
@@ -482,7 +418,7 @@ makei18n({
                 </td>
             
 
-            <td class="description last"><p>you can customize your own logic function to transfer your language list</p></td>
+            <td class="description last"><p>you can customize your own logic function to transfer your language list.  Note: it must be a symmetry with i18nKeyToCSV</p></td>
         </tr>
 
     

@@ -112,7 +112,7 @@ makei18n({
  * @param {string} [inputFileName = 'messages.json'] - the name of your i18n json file
  * @param {string} [outputFileName = 'messages.json'] - the name of the output file
  * @param {string} [env = ''] - the default is without object with message key or you can pass `ChromeExtension` for the object with the message key
- * @param {function} [i18nLanguageTransfer = String -> String] you can customize your own logic function to prefix your language list
+ * @param {function} [i18nLanguageTransfer = String -> String] you can customize your own logic function to transfer your language list
  */
 exports.makei18n = async ({
     inputCSV,
