@@ -1,6 +1,6 @@
 {
   "name": "makei18n",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A chrome extension i18n maker",
   "main": "main.js",
   "scripts": {

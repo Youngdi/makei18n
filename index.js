@@ -59,8 +59,8 @@ makei18n({
 
 makei18nCSV({
   inputDir: './_locales',
-  inputFileName: 'messages.json',
-  outputFileName: 'test.csv',
+  // inputFileName: 'messages.json',
+  // outputFileName: 'test.csv',
   // i18nKeyToCSV = defaultI18nKeyToCSV, // optional 
   // i18nLanguageTransfer = defaultI18nLanguageTransfer, // optional 
 });

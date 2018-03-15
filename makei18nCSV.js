@@ -15,15 +15,15 @@ const {
  *  <p>makei18nCSV helps your to make a standard format of your i18n csv file</p>
  *  <p><b style="color:red">Note: </b><b>_locales folder structure must follows the pattern</b></p>
  * ```sh
-   _locales
-      cs -> messages.json 
-      de -> messages.json
-      en -> messages.json
-      fr -> messages.json
-      ja -> messages.json
-      zh_TW -> messages.json
-      zh_CN -> messages.json
-      ...others i18n -> messages.json
+_locales
+  cs -> messages.json 
+  de -> messages.json
+  en -> messages.json
+  fr -> messages.json
+  ja -> messages.json
+  zh_TW -> messages.json
+  zh_CN -> messages.json
+  ...others i18n -> messages.json
 ```
  *  <b><a href="https://github.com/Youngdi/makei18n/tree/master/_locales">Check _locales structure here</a></b>
 * ## Default params
@@ -87,22 +87,21 @@ const defaultI18nLanguageTransfer = R.cond([
 const { makei18nCSV } = require('makei18n');
 makei18nCSV({
   inputDir: './_locales',
-  inputFileName: 'messages.json',
-  outputFileName: 'test.csv',
+  // inputFileName: 'messages.json',
+  // outputFileName: 'translation.csv',
   // i18nKeyToCSV = defaultI18nKeyToCSV, // optional 
   // i18nLanguageTransfer = defaultI18nLanguageTransfer, // optional 
 });
-});
  * @param {string} inputDir - the path of your i18n folder
- * @param {string} inputFileName - the name of your i18n file
- * @param {string} outputFileName - the name of your i18n json file
+ * @param {string} [inputFileName = 'messages.json'] - the name of your i18n json file
+ * @param {string} [outputFileName = 'translation.csv'] - the name of your output csv file
  * @param {function} [i18nKeyToCSV = String -> String] - you can customize your own logic function to transfer your i18n key. Note: it must be a symmetry with i18nLanguageTransfer
  * @param {function} [i18nLanguageTransfer = String -> String] - you can customize your own logic function to transfer your language list.  Note: it must be a symmetry with i18nKeyToCSV
  */
 exports.makei18nCSV = async ({
   inputDir,
-  inputFileName,
-  outputFileName,
+  inputFileName = 'messages.json',
+  outputFileName = 'translation.csv',
   i18nKeyToCSV = defaultI18nKeyToCSV,
   i18nLanguageTransfer = defaultI18nLanguageTransfer,
 }) =>

@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "makei18n": "^1.1.0"
+    "makei18n": "^1.1.1"
   }
 }
