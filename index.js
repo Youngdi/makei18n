@@ -49,17 +49,19 @@
 const { makei18n, makei18nCSV } = require('./main.js');
 
 makei18n({
-  // inputDir: './_locales',
   inputCSV:`${__dirname}/example.csv`,
+  // inputDir: './_locales', // optional 
   // inputFileName: 'messages.json', // messages.json
   // outputFileName: 'messages.json', // messages.json
-  env: 'ChromeExtension',
+  // env: 'ChromeExtension', // optional 
+  // i18nLanguageTransfer = defaultI18nLanguageTransfer,  // optional 
 });
 
-// setTimeout(() => {
-//   makei18nCSV({
-//     inputDir: './_locales',
-//     inputFileName: 'messages.json',
-//     outputFile: 'test.csv',
-//   });
-// }, 2000);
+makei18nCSV({
+  inputDir: './_locales',
+  inputFileName: 'messages.json',
+  outputFile: 'test.csv',
+  // i18nKeyToCSV = defaultI18nKeyToCSV, // optional 
+  // i18nLanguageTransfer = defaultI18nLanguageTransfer, // optional 
+});
+

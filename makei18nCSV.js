@@ -1,16 +1,24 @@
 const R = require('ramda');
-const { normalizationLang, defaultConvertLangPrefix, makeCSVFile, getDirList, json2csvConverter, defaultFields} = require('./lib/utility');
+const { 
+  normalizationLang,
+  i18nKeyToCSVwithPreload,
+  defaultI18nKeyToCSV,
+  defaultI18nLanguageTransfer,
+  makeCSVFile,
+  getDirList,
+  json2csvConverter
+} = require('./lib/utility');
 
 exports.makei18nCSV = ({
   inputDir,
   inputFileName,
   outputFile,
-  convertLangPrefix = defaultConvertLangPrefix,
-  fields = defaultFields,
+  i18nKeyToCSV = defaultI18nKeyToCSV,
+  i18nLanguageTransfer = defaultI18nLanguageTransfer,
 }) =>
-R.pipe(
-  getDirList,
-  normalizationLang(inputDir, inputFileName, convertLangPrefix),
-  json2csvConverter(fields),
-  makeCSVFile(outputFile)
-)(inputDir);
+  R.pipe(
+    getDirList,
+    i18nKeyToCSVwithPreload(i18nKeyToCSV),
+    R.chain(json2csvConverter, normalizationLang(inputDir, inputFileName, i18nLanguageTransfer)),
+    makeCSVFile(outputFile)
+  )(inputDir)
