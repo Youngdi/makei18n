@@ -6,7 +6,7 @@ Have you ever struggled with dealing with dumb copy and paste to your i18n JSON 
 `makei18n` will helps you to make your `I18n JSON file` and `translation.csv` so easy.
 All you need to do is just tell `makei18n` your CSV file path.
 Then it will automatically generate `_locales` and `translation.csv` for you.
-It does not only provide your simple format but also support chrome extension format, which has `{message:""}` key.
+It does not only provide simple format but also support chrome extension format, which has `{message:""}` in key value.
 FYI, It only transfers 23 countries' language into i18 format with default set up and feels free to customize your own translation list.
 ## Features
 *  Automatic migration: it will write over value if i18n key is existed or add a new key.
