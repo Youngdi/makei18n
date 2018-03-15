@@ -42,7 +42,7 @@ makei18n({
   // i18nLanguageTransfer: defaultI18nLanguageTransfer, // optional
 });
 ```
-### Parameters - [JSdoc api](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
+### Parameters - [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
 
 | Property | Type | Attributes | Default | Description |
 |---|---|---|---|---|
@@ -82,9 +82,8 @@ const i18nLanguageTransfer = R.cond([
   [R.T, R.identity]
 ]);
 ```
-#
-#
-#
+
+
 ---
 # makei18nCSV
 `makei18nCSV` helps your to make a standard format of your i18n csv file
@@ -114,7 +113,7 @@ makei18nCSV({
  });
 ```
 
-### Parameters - [JSdoc api](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18nCSV.html)
+### Parameters - [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18nCSV.html)
 
 | Property | Type | Attributes | Default | Description |
 |---|---|---|---|---|
