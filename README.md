@@ -2,12 +2,12 @@
  
 ![N|Solid](https://i.imgur.com/QPlwHgC.png?1) Make i18n JSON file so easy.
 
-Have you ever struggled with dealing with dumb copy and paste to your i18n JSON file?
-`makei18n` will helps you to make your `I18n JSON file` and `translation.csv` so easy.
-All you need to do is just tell `makei18n` your CSV file path.
-Then it will automatically generate `_locales` and `translation.csv` for you.
-It does not only provide simple format but also support chrome extension format, which has `{message:""}` in key value.
-FYI, It only transfers 23 countries' language into i18 format with default set up and feels free to customize your own translation list.
+Hi folks! Are you ever tired of copying i18n keys one by one into your JSON file? It’s kind of a buzz killer, isn’t it!?! Check out “makei18n” to help you out!
+
+Simply input a standard CSV format file to generate a complete _locales folder with i18n JSON files. This module is really compatible for RD, PM or even translation companies. It supports all different kinds of i18n modules including the Chrome extension format, which has `{message:""}` in key value. All you need to do is just tell `makei18n` your CSV file path. Then it will automatically generate `_locales` and `translation.csv` for you. FYI, It only transfers 23 countries' language into i18 format with default set up and feels free to customize your own translation list.
+
+If you like it, just give me a ⭐️! Also feel free to give me a PR or help to contribute your i18n language and cli version.
+
 ## Features
 *  Automatic migration: it will write over value if i18n key is existed or add a new key.
 *  Effectively cooperation: it provides the standard format to make a csv and easy to use for both of PM and RD.
