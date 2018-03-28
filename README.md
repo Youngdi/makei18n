@@ -17,10 +17,10 @@ If you like it, just give me a ⭐️! Also feel free to give me a PR or help to
 * [As Library](#library)
     * [makei18n](#makei18n)
         * [Usage](#makei18n-example-usage) 
-        * [Parameters] (#makei18n-parameters)
+        * [Parameters](#makei18n-parameters)
     * [makei18nCSV](#makei18nCSV) 
         * [Usage](#makei18nCSV-example-usage)
-        * [Parameters] (#makei18nCSV-parameters)
+        * [Parameters](#makei18nCSV-parameters)
 * [As Command Line Tool](#command-line-usage)
     * [Customize option](#customize-option)
 
@@ -126,7 +126,7 @@ const i18nLanguageTransfer = R.cond([
 
 
 ---
-# makei18nCSV
+## makei18nCSV
 `makei18nCSV` helps your to make a standard format of your i18n csv file
 `Note: ` _locales folder structure must follows the pattern
 ### folder structure [Check `_locales` structure here](https://github.com/Youngdi/makei18n/tree/master/_locales)
