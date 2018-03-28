@@ -12,13 +12,49 @@ If you like it, just give me a ⭐️! Also feel free to give me a PR or help to
 *  Automatic migration: it will write over value if i18n key is existed or add a new key.
 *  Effectively cooperation: it provides the standard format to make a csv and easy to use for both of PM and RD.
 *  Manageable tool: It helps you generate the i18n JSON file and the CSV sheet for translation company.
-## Installation
+
+# Quick Start
+* [As Library](#library)
+    * [API](#cSV-file-format)
+    * [JSdoc API](#parameters) 
+* [As Command Line Tool](#command-line-usage)
+    * [Customize option](#customize-option)
+
+## Library
+
+###  Installation
 1.  First you need have installed `node.js`. If not go [here](https://nodejs.org/en/) download it.
 2.  `git clone https://github.com/Youngdi/makei18n`
 3.  `cd example`
 4.  `npm install makei18n --save`
-5.  `node index.js`
+5.  `npm run start`
 6.  Check example folder it should have the `_locales` document with i18n JSON and a translation.csv in it.
+
+## Command Line Usage
+
+###  Installation
+1.  First you need have installed `node.js`. If not go [here](https://nodejs.org/en/) download it.
+2.  `git clone https://github.com/Youngdi/makei18n`
+3.  `cd example`
+4.  `npm install makei18n -g`
+5.  `makei18n --type csv --file example.csv`
+6.  `makei18n --type json --dir _locales`
+7.  Check example folder it should have the `_locales` document with i18n JSON and a translation.csv in it.
+
+### Customize option
+* Usage 1: input your csv file: 
+    *   `makei18n -t csv -f example.csv`
+* Usage 2: input your locales folder: 
+    *   `makei18n -t json -d locales`
+* Usage 3: fully customize input file name,output file name,env and folder name:
+    *   `makei18n -t csv -f ./example.csv -d ./_locales -i messages.json -o messages.json -e ChromeExtension`
+* Usage 4: fully customize input locales folder name,input file name,output csv file name:
+    *   `makei18n -t json -d ./locales -i messages.json -o translation.csv`
+* Note:
+    *   If you use ChromeExtension env it only generates messages.json, which is a standard name for chrome extension
+    *   If you customize your own i18n adapter just go look at README.md on github
+
+
 ## CSV file format
 `Note`: CSV file must follows this pattern "key","EN","CHT","CHS","Czech","German","French","Others..." 
 

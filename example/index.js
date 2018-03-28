@@ -8,7 +8,7 @@ const run = async () => {
     inputCSV:`${__dirname}/example.csv`,
     // inputDir: './_locales', // optional 
     // inputFileName: 'messages.json', // messages.json
-    // outputFileName: 'messages.json', // messages.json
+    // outputFileName: 'bbb.json', // messages.json
     // env: 'ChromeExtension', // optional 
     // i18nLanguageTransfer = defaultI18nLanguageTransfer,  // optional 
   });
