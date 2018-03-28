@@ -19,7 +19,7 @@ If you like it, just give me a ⭐️! Also feel free to give me a PR or help to
         * [Usage](#makei18n-example-usage) 
         * [Parameters](#makei18n-parameters)
     * [makei18nCSV](#makei18nCSV) 
-        * [Usage](#makei18nCSV-example-usage)
+        * [Usage](#aaa)
         * [Parameters](#makei18nCSV-parameters)
 * [As Command Line Tool](#command-line-usage)
     * [Customize option](#customize-option)
@@ -70,7 +70,7 @@ If you like it, just give me a ⭐️! Also feel free to give me a PR or help to
 | msg_btn_back | back | 回上一頁| 回上一页 | Others...|
 
 ## makei18n
-### makei18n Example Usage: 
+### makei18n Example Usage:
 
 ```
 const { makei18n } = require('makei18n');
@@ -141,7 +141,7 @@ _locales
   zh_CN -> messages.json
   ...others i18n -> messages.json
 ```
-### makei18nCSV Example Usage: 
+### aaa:
 ```
 const { makei18nCSV } = require('makei18n');
 makei18nCSV({
