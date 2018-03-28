@@ -94,7 +94,7 @@ makei18n({
 | `env` | string | optional| `''`  | the default is without object with message key or you can pass `ChromeExtension` for the object with the message key |
 | `i18nLanguageTransfer` | function | optional| String -> String |you can customize your own logic function to transfer your language list |
 
-## Default params
+### Default params
 ```
 const i18nLanguageTransfer = R.cond([
   [R.equals('CHS'), R.always('zh_CN')],
@@ -223,8 +223,7 @@ const defaultI18nLanguageTransfer = R.cond([
 ]);
 ```
 ## What Next?
-* Command line version
-* Online transfer version
+* Online adapter version
 
 ## License
 
