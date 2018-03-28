@@ -15,6 +15,8 @@ If you like it, just give me a ⭐️! Also feel free to give me a PR or help to
 
 # Quick Start
 * [As Library](#library)
+    * [CSV file format](#csv-file-format)
+    * [_locales folder structure](#_locales-folder-structure)
     * [makei18n](#makei18n)
         * [Usage](#makei18n-example-usage) 
         * [Parameters](#makei18n-parameters)
@@ -129,7 +131,8 @@ const i18nLanguageTransfer = R.cond([
 ## makei18nCSV
 `makei18nCSV` helps your to make a standard format of your i18n csv file
 `Note: ` _locales folder structure must follows the pattern
-### folder structure [Check `_locales` structure here](https://github.com/Youngdi/makei18n/tree/master/_locales)
+### _locales folder structure
+#### [Check `_locales` structure here](https://github.com/Youngdi/makei18n/tree/master/_locales)
 ```sh
 _locales
   cs -> messages.json 
@@ -154,7 +157,7 @@ makei18nCSV({
 ```
 
 ### makei18nCSV Parameters
-####[JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18nCSV.html)
+#### [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18nCSV.html)
 
 | Property | Type | Attributes | Default | Description |
 |---|---|---|---|---|
