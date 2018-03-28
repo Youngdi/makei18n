@@ -18,9 +18,9 @@ If you like it, just give me a ⭐️! Also feel free to give me a PR or help to
     * [makei18n](#makei18n)
         * [Usage](#makei18n-example-usage) 
         * [Parameters](#makei18n-parameters)
-    * [makei18nCSV](#makei18nCSV) 
-        * [Usage](#aaa)
-        * [Parameters](#makei18nCSV-parameters)
+    * [makei18nCSV](#makei18ncsv) 
+        * [Usage](#makei18ncsv-example-usage)
+        * [Parameters](#makei18ncsv-parameters)
 * [As Command Line Tool](#command-line-usage)
     * [Customize option](#customize-option)
 
@@ -141,7 +141,7 @@ _locales
   zh_CN -> messages.json
   ...others i18n -> messages.json
 ```
-### aaa:
+### makei18nCSV Example Usage:
 ```
 const { makei18nCSV } = require('makei18n');
 makei18nCSV({
