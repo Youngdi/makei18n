@@ -15,8 +15,12 @@ If you like it, just give me a ⭐️! Also feel free to give me a PR or help to
 
 # Quick Start
 * [As Library](#library)
-    * [API](#cSV-file-format)
-    * [JSdoc API](#parameters) 
+    * [makei18n](#makei18n)
+        * [Usage](#makei18n-example-usage) 
+        * [Parameters] (#makei18n-parameters)
+    * [makei18nCSV](#makei18nCSV) 
+        * [Usage](#makei18nCSV-example-usage)
+        * [Parameters] (#makei18nCSV-parameters)
 * [As Command Line Tool](#command-line-usage)
     * [Customize option](#customize-option)
 
@@ -65,6 +69,7 @@ If you like it, just give me a ⭐️! Also feel free to give me a PR or help to
 | msg_btn_close_divLogine  | close| 關閉|关闭|Others...|
 | msg_btn_back | back | 回上一頁| 回上一页 | Others...|
 
+## makei18n
 ### makei18n Example Usage: 
 
 ```
@@ -78,7 +83,7 @@ makei18n({
   // i18nLanguageTransfer: defaultI18nLanguageTransfer, // optional
 });
 ```
-### Parameters - [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
+### makei18n Parameters - [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
 
 | Property | Type | Attributes | Default | Description |
 |---|---|---|---|---|
@@ -149,7 +154,7 @@ makei18nCSV({
  });
 ```
 
-### Parameters - [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18nCSV.html)
+### makei18nCSV Parameters - [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18nCSV.html)
 
 | Property | Type | Attributes | Default | Description |
 |---|---|---|---|---|
