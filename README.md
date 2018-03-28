@@ -83,8 +83,8 @@ makei18n({
   // i18nLanguageTransfer: defaultI18nLanguageTransfer, // optional
 });
 ```
-### makei18n Parameters - [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
-
+### makei18n Parameters
+#### [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18n.html)
 | Property | Type | Attributes | Default | Description |
 |---|---|---|---|---|
 | `inputCSV`  | string | required |   | the path of your CSV file |
@@ -142,7 +142,6 @@ _locales
   ...others i18n -> messages.json
 ```
 ### makei18nCSV Example Usage: 
-
 ```
 const { makei18nCSV } = require('makei18n');
 makei18nCSV({
@@ -154,7 +153,8 @@ makei18nCSV({
  });
 ```
 
-### makei18nCSV Parameters - [JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18nCSV.html)
+### makei18nCSV Parameters
+####[JSdoc API](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/docs/module-makei18nCSV.html)
 
 | Property | Type | Attributes | Default | Description |
 |---|---|---|---|---|
