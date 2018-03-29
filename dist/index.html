@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+  <link rel="stylesheet" type="text/css" href="./css/dropzone.css">
+  <style>
+      .header:before {
+        position: absolute;
+        width: 100%;
+        height: 8px;
+        background-image: linear-gradient(to right, #aa1717, #ff1b1b);
+        content: "";
+      }
+      .content {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .imageContainer {
+        margin:30px;
+        margin-top:50px;
+      }
+      </style>
+      <script src="main.bundle.js"></script>
+      <script src="./js/dropzone.min.js"></script>
+  </head>
+  <body>
+    <div class="header"></div>
+    <div class="content">
+      <div class="imageContainer">
+          <image src="./images/makei18n.png" width="300" height="300" />
+      </div>
+      <div>
+          <form id="makei18n" class="dropzone dz-clickable">
+          </form>
+          <button id="submit-all">Submit all files</button>
+      </div>
+    </div>
+    <div class="footer"></div>
+    <script>
+      Dropzone.autoDiscover = false;
+      Dropzone.options.makei18n = {
+        paramName: "file", // The name that will be used to transfer the file
+        maxFiles: 1,
+        maxFilesize: 512, // MB
+        autoProcessQueue: false,
+        addRemoveLinks: true,
+        acceptedFiles: '.csv',
+        uploadMultiple: false,
+        autoQueue: false,
+        parallelUploads:1,
+        dictDefaultMessage: 'Drop your CSV files here or click to upload.<br><span class="note">Generate a makei18n.zip include the languages provided by your CSV file</span>',
+        init: function() {
+          var submitButton = document.querySelector("#submit-all")
+              myDropzone = this; // closure
+           this.on("maxfilesexceeded", function(file) {
+              this.removeAllFiles();
+              this.addFile(file);
+            });
+          submitButton.addEventListener("click", function() {
+              makei18n(myDropzone.files[0]);
+          });
+        },
+        accept: function(file, done) {
+          document.querySelector('.dz-progress').remove();
+          file.name.indexOf('.csv') > -1 ? done() : done("Format error");
+        }
+      };
+      var myDropzone = new Dropzone("#makei18n", { url: "/file/post"});
+
+    </script>
+  </body>
+</html>

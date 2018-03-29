@@ -1,5 +1,6 @@
 
-const { makei18n, makei18nCSV } = require('makei18n');
+// const { makei18n, makei18nCSV } = require('makei18n');
+const { makei18n, makei18nCSV } = require('../main.js');
 const defaultI18nLanguageTransfer = () => {}; // your own logic transfer function
 const defaultI18nKeyToCSV = () => {};
 
