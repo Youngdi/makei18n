@@ -7,7 +7,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
 	entry: ['babel-polyfill', './src/zip.js'],
 	output: {
-		filename: '[name].bundle.js',
+		filename: './js/webMakei18n.min.js',
 		path: path.resolve(__dirname, 'dist')
 	},
   devServer: {
