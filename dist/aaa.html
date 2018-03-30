@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+  <style>
+  .header:before {
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background-image: linear-gradient(to right, #aa1717, #ff1b1b);
+    content: "";
+  }
+  .content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .imageContainer {
+    margin:30px;
+    margin-top:50px;
+  }
+  .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  }
+  .switch input {
+    display:none;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  div svg {
+    cursor: pointer;
+    fill: #aaa;
+  }
+  div svg:hover {
+    fill: rgba(230, 24, 24, 0.94);
+  }
+  </style>
+  </head>
+  <body>
+    <div class="header"></div>
+    <div class="content">
+      <div class="imageContainer">
+          <image src="https://i.imgur.com/kOfxtNd.png" width="250" height="250" />
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center;">
+        <div style="display:flex;justify-content:center;align-items:center;width:450px;margin-left:80px;">
+            <div style="margin-right:15px;"><p id="chromeExtension" style="font-size:20px;">For Chrome Extension</p></div>
+            <label class="switch">
+              <input id="option" type="checkbox" onclick='handleClick(this);'>
+              <span class="slider"></span>
+            </label>
+
+        </div>
+        <div id="submit-all" style="width:80px;height:80px;">
+          <svg version="1.1" id="Download" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+          <path d="M15,7h-3V1H8v6H5l5,5L15,7z M19.338,13.532c-0.21-0.224-1.611-1.723-2.011-2.114
+            C17.062,11.159,16.683,11,16.285,11h-1.757l3.064,2.994h-3.544c-0.102,0-0.194,0.052-0.24,0.133L12.992,16H7.008l-0.816-1.873
+            c-0.046-0.081-0.139-0.133-0.24-0.133H2.408L5.471,11H3.715c-0.397,0-0.776,0.159-1.042,0.418c-0.4,0.392-1.801,1.891-2.011,2.114
+            c-0.489,0.521-0.758,0.936-0.63,1.449l0.561,3.074c0.128,0.514,0.691,0.936,1.252,0.936h16.312c0.561,0,1.124-0.422,1.252-0.936
+            l0.561-3.074C20.096,14.468,19.828,14.053,19.338,13.532z"/>
+          </svg>
+        </div>
+      </div>
+      <div style="margin-top:30px;">
+          <form id="makei18n" class="dropzone dz-clickable">
+          </form>
+      </div>
+    </div>
+    <div class="footer"></div>
+    <script>
+      function handleClick(cb) {
+        document.getElementById('chromeExtension').style.color = cb.checked ? '#2196F3' : '#ccc';
+      }
+      function handleFiles(files) {
+        window.FileReader ? getAsText(files) : alert('FileReader are not supported in this browser.');
+      }
+      function getAsText(fileToRead) {
+        const reader = new FileReader();
+        reader.readAsText(fileToRead);
+        reader.onload = loadHandler;
+        reader.onerror = errorHandler;
+      }
+      function loadHandler(event) {
+        makei18n(event.target.result, document.getElementById('option').checked ? 'ChromeExtension' : '');
+      }
+      function errorHandler(evt) {
+        (evt.target.error.name == "NotReadableError") ? alert("Canno't read file !") : null;
+      }
+      Dropzone.autoDiscover = false;
+      Dropzone.options.makei18n = {
+        paramName: "file", // The name that will be used to transfer the file
+        maxFiles: 1,
+        maxFilesize: 512, // MB
+        autoProcessQueue: false,
+        addRemoveLinks: true,
+        acceptedFiles: '.csv',
+        uploadMultiple: false,
+        autoQueue: false,
+        parallelUploads:1,
+        dictDefaultMessage: 'Drop your CSV files here or click to upload.<br><span class="note">Generate a makei18n.zip include the languages provided by your CSV file</span>',
+        init: function() {
+          var submitButton = document.querySelector("#submit-all")
+              myDropzone = this; // closure
+           this.on("maxfilesexceeded", function(file) {
+              this.removeAllFiles();
+              this.addFile(file);
+            });
+          submitButton.addEventListener("click", function() {
+            myDropzone.files[0] ? handleFiles(myDropzone.files[0]) : alert('Please upload CSV file');
+          });
+        },
+        accept: function(file, done) {
+          document.querySelector('.dz-progress').remove();
+          file.name.indexOf('.csv') > -1 ? done() : done("Format error");
+        }
+      };
+      var myDropzone = new Dropzone("#makei18n", { url: "/file/post"});
+    </script>
+  </body>
+</html>
