@@ -1,4 +1,4 @@
-# makei18n [![npm](https://img.shields.io/npm/v/makei18n.svg)](https://www.npmjs.com/package/makei18n) 
+# makei18n [![npm](https://img.shields.io/npm/v/makei18n.svg)](https://www.npmjs.com/package/makei18n)
  
 ![N|Solid](https://i.imgur.com/QPlwHgC.png?1) Make i18n JSON file so easy.
 
