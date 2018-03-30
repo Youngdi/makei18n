@@ -1,6 +1,6 @@
 {
   "name": "makei18n",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "I18n maker to make your i18n file easier",
   "main": "main.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "I18n",
     "JSON",
     "CSV",
-    "tool"
+    "translation tool"
   ],
   "email": "u9951062@gmail.com",
   "bugs": {
@@ -27,7 +27,7 @@
     "makei18n": "./index.js"
   },
   "repository": "https://github.com/Youngdi/makei18n",
-  "homepage": "https://github.com/Youngdi/makei18n#readme",
+  "homepage": "http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/dist/static.html",
   "dependencies": {
     "commander": "^2.15.0",
     "csvtojson": "^1.1.9",
