@@ -31,6 +31,7 @@
   "dependencies": {
     "commander": "^2.15.0",
     "csvtojson": "^1.1.9",
+    "dropzone": "^5.4.0",
     "file-saver": "^1.3.8",
     "json2csv": "^4.0.2",
     "jszip": "^3.1.5",
@@ -40,13 +41,19 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "browserfs": "^1.4.3",
     "docdash": "^0.4.0",
+    "hard-source-webpack-plugin": "^0.6.4",
     "jsdoc": "^3.5.5",
     "uglifyjs-webpack-plugin": "^1.2.4",
-    "webpack": "^4.3.0",
+    "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-dev-server": "^3.1.1",
+    "webpack-node-externals": "^1.6.0",
+    "webpack-visualizer-plugin": "^0.1.11"
   }
 }

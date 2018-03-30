@@ -8,7 +8,11 @@ const {
   generateLangList,
   migrateJSON,
   makeLangJSON,
-  getDirLangList
+  getDirLangList,
+  webGetDirLangList,
+  webGetCSVLangList,
+  webGenerateLangList,
+  webMakeJSONfileZip
 } = require('./lib/utility');
 
 /**
@@ -133,4 +137,21 @@ exports.makei18n = async ({
       makeJSONfile(dirLangList, i18nLanguageTransfer, env, outputFileName),
     )(dirLangList, i18nLanguageTransfer)
   }
-  
+
+exports.webMakei18n = async ({
+    inputCSV,
+    inputDir = './_locales',
+    inputFileName = 'messages.json',
+    outputFileName = 'messages.json',
+    env = '',
+    i18nLanguageTransfer = defaultI18nLanguageTransfer,
+  }) =>
+  {
+    const makeLangJSONWithEnv = makeLangJSON(env == 'ChromeExtension' ? R.objOf('message') : R.identity);
+    const dirLangList = await webGetDirLangList(inputCSV);
+    return R.pipeP(
+      webGetCSVLangList,
+      webGenerateLangList(dirLangList, i18nLanguageTransfer, makeLangJSONWithEnv),
+      webMakeJSONfileZip(dirLangList, i18nLanguageTransfer, env, outputFileName),
+    )(inputCSV)
+  }

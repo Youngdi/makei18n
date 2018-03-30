@@ -1,24 +1,12 @@
-import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
 import { webMakei18n } from '../main.js';
-const zip = new JSZip();
+import Dropzone from "dropzone";
 
-function makei18n(file) {
+async function makei18n(file, env = '') {
   webMakei18n({
-    inputCSV: file,
+    inputCSV:file,
+    env,
   });
-  // zip.folder("_locales").file("_locales.csv", file);
-  // zip.generateAsync({type:"blob"})
-  // .then(function(content) {
-  //     saveAs(content, "makei18n.zip");
-  // });
 }
-// function makei18nCSV() {
-//   zip.file("Hello.txt", "Hello World\n");
-//   zip.generateAsync({type:"blob"})
-//   .then(function(content) {
-//       saveAs(content, "example.zip");
-//   });
-// }
 window.makei18n = makei18n;
-window.makei18nCSV = makei18nCSV;
+window.Dropzone = Dropzone;
+// window.makei18nCSV = makei18nCSV;
