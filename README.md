@@ -1,6 +1,6 @@
 # makei18n [![npm](https://img.shields.io/npm/v/makei18n.svg)](https://www.npmjs.com/package/makei18n)
  
-![N|Solid](https://i.imgur.com/QPlwHgC.png?1) Make i18n JSON file so easy.
+![N|Solid](https://i.imgur.com/QPlwHgC.png?1) Make i18n JSON file so easy. [Demo Online](http://htmlpreview.github.io/?https://github.com/Youngdi/makei18n/blob/master/dist/static.html)
 
 Hi folks! Are you ever tired of copying i18n keys one by one into your JSON file? It’s kind of a buzz killer, isn’t it!?! Check out “makei18n” to help you out!
 
@@ -231,4 +231,3 @@ const defaultI18nLanguageTransfer = R.cond([
 ## License
 
 This project is licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
-Any bundled fonts are copyright to their respective authors and mostly under MIT or [SIL OFL](http://scripts.sil.org/OFL).
