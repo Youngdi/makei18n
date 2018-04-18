@@ -2,7 +2,7 @@
 const { makei18n, makei18nCSV } = require('./main.js');
 const program = require('commander');
 program
-  .version('1.4.0', '-v, --version')
+  .version('1.5.4', '-v, --version')
   .option('-t, --type <a>', 'Required -> process with csv or json file')
   .option('-f, --file <a>', 'Required -> file path')
   .option('-d, --dir <a>', 'Optional -> Default is ./_locales')
@@ -18,13 +18,13 @@ program.on('--help', function(){
   console.log('    $ makei18n -t csv -f ./example.csv');
   console.log('');
   console.log('Usage 2: input your locales folder');
-  console.log('    $ makei18n -t json -f ./locales');
+  console.log('    $ makei18n -t json -f ./_locales');
   console.log('');
   console.log('Usage 3: fully customize input file name,output file name,env and folder name');
   console.log('    $ makei18n -t csv -f ./example.csv -d ./_locales -i messages.json -o messages.json -e ChromeExtension');
   console.log('');
   console.log('Usage 4: fully customize input locales folder name,input file name,output csv file name');
-  console.log('    $ makei18n -t json -d ./locales -i messages.json -o translation.csv');
+  console.log('    $ makei18n -t json -d ./_locales -i messages.json -o translation.csv');
   console.log('');
   console.log('Notes 1: If you use ChromeExtension env it only generates messages.json, which is a standard name for chrome extension');
   console.log('Notes 2: If you customize your own i18n adapter just go look at README.md on github');
