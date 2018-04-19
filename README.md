@@ -99,6 +99,8 @@ makei18n({
 ### Default params
 ```
 const i18nLanguageTransfer = R.cond([
+  [R.equals('China'), R.always('zh-cn')],
+  [R.equals('Taiwan'), R.always('zh-tw')],
   [R.equals('CHS'), R.always('zh_CN')],
   [R.equals('CHT'), R.always('zh_TW')],
   [R.equals('EN'), R.always('en')],
@@ -109,18 +111,21 @@ const i18nLanguageTransfer = R.cond([
   [R.equals('Hungarian'), R.always('hu')],
   [R.equals('Swedish'), R.always('sv')],
   [R.equals('Russian'), R.always('ru')],
-  [R.equals('Czech'), R.always('cs')],
+  [R.equals('Czech(cz)'), R.always('cz')],
+  [R.equals('Czech(cs)'), R.always('cs')],
   [R.equals('Dutch'), R.always('nl')],
   [R.equals('Finnish'), R.always('fi')],
   [R.equals('French'), R.always('fr')],
   [R.equals('German'), R.always('de')],
-  [R.equals('Greek'), R.always('el')],
+  [R.equals('Greek(el)'), R.always('el')],
+  [R.equals('Greek(gr)'), R.always('gr')],
   [R.equals('Norwegian'), R.always('no')],
   [R.equals('Polish'), R.always('pl')],
   [R.equals('Spanish (Spain)'), R.always('es')],
   [R.equals('Turkish'), R.always('tr')],
   [R.equals('Thai'), R.always('th')],
   [R.equals('Romanian'), R.always('ro')],
+  [R.equals('Portuguese(Brazil)'), R.always('pt-br')],
   [R.equals('Portuguese'), R.always('pt')],
   [R.T, R.identity]
 ]);
@@ -171,6 +176,8 @@ makei18nCSV({
 ### Default params
 ```
 const defaultI18nKeyToCSV = R.cond([
+  [R.equals('zh-cn'), R.always('China')],
+  [R.equals('zh-tw'), R.always('Taiwan')],
   [R.equals('zh_CN'), R.always('CHS')],
   [R.equals('zh_TW'), R.always('CHT')],
   [R.equals('en'), R.always('EN')],
@@ -181,12 +188,14 @@ const defaultI18nKeyToCSV = R.cond([
   [R.equals('hu'), R.always('Hungarian')],
   [R.equals('sv'), R.always('Swedish')],
   [R.equals('ru'), R.always('Russian')],
-  [R.equals('cs'), R.always('Czech')],
+  [R.equals('cz'), R.always('Czech(cz)')],
+  [R.equals('cs'), R.always('Czech(cs)')],
   [R.equals('nl'), R.always('Dutch')],
   [R.equals('fi'), R.always('Finnish')],
   [R.equals('fr'), R.always('French')],
   [R.equals('de'), R.always('German')],
-  [R.equals('el'), R.always('Greek')],
+  [R.equals('gr'), R.always('Greek(gr)')],
+  [R.equals('el'), R.always('Greek(el)')],
   [R.equals('no'), R.always('Norwegian')],
   [R.equals('pl'), R.always('Polish')],
   [R.equals('es'), R.always('Spanish (Spain)')],
@@ -194,11 +203,14 @@ const defaultI18nKeyToCSV = R.cond([
   [R.equals('th'), R.always('Thai')],
   [R.equals('ro'), R.always('Romanian')],
   [R.equals('pt'), R.always('Portuguese')],
+  [R.equals('pt-br'), R.always('Portuguese(Brazil)')],
   [R.T, R.identity]
 ]);
 ```
 ```
 const defaultI18nLanguageTransfer = R.cond([
+  [R.equals('China'), R.always('zh-cn')],
+  [R.equals('Taiwan'), R.always('zh-tw')],
   [R.equals('CHS'), R.always('zh_CN')],
   [R.equals('CHT'), R.always('zh_TW')],
   [R.equals('EN'), R.always('en')],
@@ -209,24 +221,27 @@ const defaultI18nLanguageTransfer = R.cond([
   [R.equals('Hungarian'), R.always('hu')],
   [R.equals('Swedish'), R.always('sv')],
   [R.equals('Russian'), R.always('ru')],
-  [R.equals('Czech'), R.always('cs')],
+  [R.equals('Czech(cz)'), R.always('cz')],
+  [R.equals('Czech(cs)'), R.always('cs')],
   [R.equals('Dutch'), R.always('nl')],
   [R.equals('Finnish'), R.always('fi')],
   [R.equals('French'), R.always('fr')],
   [R.equals('German'), R.always('de')],
-  [R.equals('Greek'), R.always('el')],
+  [R.equals('Greek(el)'), R.always('el')],
+  [R.equals('Greek(gr)'), R.always('gr')],
   [R.equals('Norwegian'), R.always('no')],
   [R.equals('Polish'), R.always('pl')],
   [R.equals('Spanish (Spain)'), R.always('es')],
   [R.equals('Turkish'), R.always('tr')],
   [R.equals('Thai'), R.always('th')],
   [R.equals('Romanian'), R.always('ro')],
+  [R.equals('Portuguese(Brazil)'), R.always('pt-br')],
   [R.equals('Portuguese'), R.always('pt')],
   [R.T, R.identity]
 ]);
 ```
 ## What Next?
-* Online adapter version
+* Support more i18n locale adapter
 
 ## License
 
