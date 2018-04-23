@@ -2,7 +2,7 @@
 const { makei18n, makei18nCSV } = require('./main.js');
 const program = require('commander');
 program
-  .version('1.5.6', '-v, --version')
+  .version('1.5.7', '-v, --version')
   .option('-t, --type <a>', 'Required -> process with csv or json file')
   .option('-f, --file <a>', 'Required -> file path')
   .option('-d, --dir <a>', 'Optional -> Default is ./_locales')

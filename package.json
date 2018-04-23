@@ -1,6 +1,6 @@
 {
   "name": "makei18n",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "description": "I18n maker to make your i18n file easier",
   "main": "main.js",
   "scripts": {
