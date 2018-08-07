@@ -106,7 +106,8 @@ makei18n({
   inputCSV:`${__dirname}/example.csv`,                  // your csv file path
   // inputDir: './_locales',                            // optional 
   // inputFileName = 'messages.json',                   // optional 
-  // outputFileName = 'messages.json',                  // optional 
+  // outputFileName = 'messages.json',                  // optional
+  // outputDir = './_locales',                          // optional
   // env: '',                                           // optional, it can be ChromeExtension
   // i18nLanguageTransfer: defaultI18nLanguageTransfer, // optional
 });
@@ -115,6 +116,7 @@ makei18n({
  * @param {string} [inputDir = './_locales'] - the path of your i18n folder
  * @param {string} [inputFileName = 'messages.json'] - the name of your i18n json file
  * @param {string} [outputFileName = 'messages.json'] - the name of the output file
+ * @param {string} [outputDir = './_locales'] - the path of the output file
  * @param {string} [env = ''] - the default is without object with message key or you can pass `ChromeExtension` for the object with the message key
  * @param {function} [i18nLanguageTransfer = String -> String] you can customize your own logic function to transfer your language list
  */
@@ -123,6 +125,7 @@ exports.makei18n = async ({
     inputDir = './_locales',
     inputFileName = 'messages.json',
     outputFileName = 'messages.json',
+    outputDir = './_locales',
     env = '',
     i18nLanguageTransfer = defaultI18nLanguageTransfer,
   }) =>
@@ -134,8 +137,8 @@ exports.makei18n = async ({
       generateDir,
       getCSVLangList(inputCSV),
       generateLangList(dirLangList, i18nLanguageTransfer, migrateJSONWithConfig),
-      makeJSONfile(dirLangList, i18nLanguageTransfer, env, outputFileName),
-    )(dirLangList, i18nLanguageTransfer)
+      makeJSONfile(dirLangList, i18nLanguageTransfer, env, outputFileName, outputDir),
+    )(dirLangList, i18nLanguageTransfer, outputDir)
   }
 
 exports.webMakei18n = async ({

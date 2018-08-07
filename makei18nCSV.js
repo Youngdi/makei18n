@@ -89,12 +89,14 @@ makei18nCSV({
   inputDir: './_locales',
   // inputFileName: 'messages.json',
   // outputFileName: 'translation.csv',
+  // outputDir: '.', // optional
   // i18nKeyToCSV = defaultI18nKeyToCSV, // optional 
   // i18nLanguageTransfer = defaultI18nLanguageTransfer, // optional 
 });
  * @param {string} inputDir - the path of your i18n folder
  * @param {string} [inputFileName = 'messages.json'] - the name of your i18n json file
  * @param {string} [outputFileName = 'translation.csv'] - the name of your output csv file
+ * @param {string} [outputDir = '.'] - the path of the output file
  * @param {function} [i18nKeyToCSV = String -> String] - you can customize your own logic function to transfer your i18n key. Note: it must be a symmetry with i18nLanguageTransfer
  * @param {function} [i18nLanguageTransfer = String -> String] - you can customize your own logic function to transfer your language list.  Note: it must be a symmetry with i18nKeyToCSV
  */
@@ -102,6 +104,7 @@ exports.makei18nCSV = async ({
   inputDir,
   inputFileName = 'messages.json',
   outputFileName = 'translation.csv',
+  outputDir = '.',
   i18nKeyToCSV = defaultI18nKeyToCSV,
   i18nLanguageTransfer = defaultI18nLanguageTransfer,
 }) =>
@@ -109,5 +112,5 @@ exports.makei18nCSV = async ({
     getDirList,
     i18nKeyToCSVwithPreload(i18nKeyToCSV),
     R.chain(json2csvConverter, normalizationLang(inputDir, inputFileName, i18nLanguageTransfer)),
-    makeCSVFile(outputFileName)
+    makeCSVFile(outputFileName, outputDir)
   )(inputDir)
