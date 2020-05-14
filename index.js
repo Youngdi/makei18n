@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 const { makei18n, makei18nCSV } = require('./main.js');
 const program = require('commander');
+const { version } = require('./package.json');
+
 program
-  .version('1.6.1', '-v, --version')
+  .version(version, '-v, --version')
   .option('-t, --type <a>', 'Required -> process with csv or json file')
   .option('-f, --file <a>', 'Required -> file path')
   .option('-d, --dir <a>', 'Optional -> The migrate path Default is ./_locales')
